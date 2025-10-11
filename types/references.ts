@@ -1,10 +1,16 @@
+/**
+ * Reference Types (based on BibTeX)
+ */
+
 import { ExtractFrom, RequireAtLeastOne, RequireExactlyOne, StrictSubset } from './abstract';
 
+// Reference Types based on BibTeX
 export type ReferenceType =
     'article' | 'book' | 'booklet' | 'conference' | 'inbook' | 'incollection' |
     'inproceedings' | 'manual' | 'mastersthesis' | 'thesis' | 'misc' | 'phdthesis' |
     'proceedings' | 'techreport' | 'unpublished';
 
+// Base fields common to all reference types
 interface BaseFields< T extends ReferenceType > {
     type: T;
     accessed?: string;
@@ -12,6 +18,7 @@ interface BaseFields< T extends ReferenceType > {
     doi?: string;
 }
 
+// Common BibTeX fields
 interface BibTeXFields {
     address?: string;
     author?: string;
@@ -37,6 +44,7 @@ interface BibTeXFields {
     year?: number | string;
 }
 
+// Helper type for thesis references
 type Thesis< T extends 'mastersthesis' | 'thesis' | 'phdthesis' > =
     BaseFields< T > &
     StrictSubset<
@@ -45,6 +53,16 @@ type Thesis< T extends 'mastersthesis' | 'thesis' | 'phdthesis' > =
         'type' | 'address' | 'month' | 'note'
     >;
 
+// Helper type for conference and inproceedings references
+type Conference< T extends 'conference' | 'inproceedings' > =
+    BaseFields< T > &
+    StrictSubset<
+        BibTeXFields,
+        'author' | 'title' | 'booktitle' | 'year',
+        'editor' | 'volume' | 'number' | 'series' | 'pages' | 'address' | 'month' | 'organization' | 'publisher' | 'note'
+    >;
+
+// "@article" Reference
 export type ArticleReference =
     BaseFields< 'article' > &
     StrictSubset<
@@ -53,6 +71,7 @@ export type ArticleReference =
         'volume' | 'number' | 'pages' | 'month' | 'note'
     >;
 
+// "@book" Reference
 export type BookReference =
     BaseFields< 'book' > &
     RequireExactlyOne< BibTeXFields, 'author' | 'editor' > &
@@ -62,6 +81,7 @@ export type BookReference =
         'volume' | 'number' | 'series' | 'address' | 'edition' | 'month' | 'note' | 'isbn'
     >;
 
+// "@booklet" Reference
 export type BookletReference =
     BaseFields< 'booklet' > &
     StrictSubset<
@@ -70,14 +90,10 @@ export type BookletReference =
         'author' | 'howpublished' | 'address' | 'month' | 'year' | 'note'
     >;
 
-export type ConferenceReference =
-    BaseFields< 'conference' > &
-    StrictSubset<
-        BibTeXFields,
-        'author' | 'title' | 'booktitle' | 'year',
-        'editor' | 'volume' | 'number' | 'series' | 'pages' | 'address' | 'month' | 'organization' | 'publisher' | 'note'
-    >;
+// "@conference" Reference
+export type ConferenceReference = Conference< 'conference' >;
 
+// "@inbook" Reference
 export type InbookReference =
     BaseFields< 'inbook' > &
     RequireExactlyOne< BibTeXFields, 'author' | 'editor' > &
@@ -90,6 +106,7 @@ export type InbookReference =
         'chapter' | 'pages'
     >;
 
+// "@incollection" Reference
 export type IncollectionReference =
     BaseFields< 'incollection' > &
     StrictSubset<
@@ -98,13 +115,8 @@ export type IncollectionReference =
         'editor' | 'volume' | 'number' | 'series' | 'type' | 'chapter' | 'pages' | 'address' | 'edition' | 'month' | 'note'
     >;
 
-export type InproceedingsReference =
-    BaseFields< 'inproceedings' > &
-    StrictSubset<
-        BibTeXFields,
-        'author' | 'title' | 'booktitle' | 'year',
-        'editor' | 'volume' | 'number' | 'series' | 'pages' | 'address' | 'month' | 'organization' | 'publisher' | 'note'
-    >;
+// "@inproceedings" Reference
+export type InproceedingsReference = Conference< 'inproceedings' >;
 
 export type ManualReference =
     BaseFields< 'manual' > &
@@ -114,10 +126,13 @@ export type ManualReference =
         'author' | 'organization' | 'address' | 'edition' | 'month' | 'year' | 'note'
     >;
 
+// "@mastersthesis" Reference
 export type MastersthesisReference = Thesis< 'mastersthesis' >;
 
+// "@thesis" Reference
 export type ThesisReference = Thesis< 'thesis' >;
 
+// "@misc" Reference
 export type MiscReference =
     BaseFields< 'misc' > &
     ExtractFrom<
@@ -125,8 +140,10 @@ export type MiscReference =
         'author' | 'title' | 'howpublished' | 'month' | 'year' | 'note'
     >;
 
+// "@phdthesis" Reference
 export type PhdthesisReference = Thesis< 'phdthesis' >;
 
+// "@proceedings" Reference
 export type ProceedingsReference =
     BaseFields< 'proceedings' > &
     StrictSubset<
@@ -135,6 +152,7 @@ export type ProceedingsReference =
         'editor' | 'volume' | 'number' | 'series' | 'address' | 'month' | 'organization' | 'publisher' | 'note'
     >;
 
+// "@techreport" Reference
 export type TechreportReference =
     BaseFields< 'techreport' > &
     StrictSubset<
@@ -143,6 +161,7 @@ export type TechreportReference =
         'type' | 'number' | 'address' | 'month' | 'note'
     >;
 
+// "@unpublished" Reference
 export type UnpublishedReference =
     BaseFields< 'unpublished' > &
     StrictSubset<
@@ -151,6 +170,7 @@ export type UnpublishedReference =
         'month' | 'year'
     >;
 
+// Union type of all reference types
 export type Reference =
     ArticleReference | BookReference | BookletReference | ConferenceReference |
     InbookReference | IncollectionReference | InproceedingsReference | ManualReference |
