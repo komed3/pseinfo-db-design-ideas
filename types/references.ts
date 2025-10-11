@@ -80,3 +80,33 @@ export type InbookReference =
         >,
         'chapter' | 'pages'
     >;
+
+export type IncollectionReference =
+    BaseFields< 'incollection' >;
+
+export type InproceedingsReference =
+    BaseFields< 'inproceedings' >;
+
+export type ManualReference =
+    BaseFields< 'manual' >;
+
+export type MastersthesisReference =
+    BaseFields< 'mastersthesis' >;
+
+export type ThesisReference =
+    BaseFields< 'thesis' >;
+
+export type MiscReference =
+    BaseFields< 'misc' >;
+
+export type PhdthesisReference =
+    BaseFields< 'phdthesis' >;
+
+export type ProceedingsReference =
+    BaseFields< 'proceedings' >;
+
+export type TechreportReference =
+    BaseFields< 'techreport' >;
+
+export type UnpublishedReference =
+    BaseFields< 'unpublished' >;
