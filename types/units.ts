@@ -11,4 +11,23 @@ export type DerivedDimensionType =
 
 export type PhysicalDimensionType = SIDimensionType | DerivedDimensionType;
 
-type DimensionVector = readonly [ number, number, number, number, number, number, number ];
+type PhysicalDimensionVector = readonly [ number, number, number, number, number, number, number ];
+
+interface PhysicalDimension {
+    readonly symbol: string;
+    readonly name: string;
+    readonly vector: PhysicalDimensionVector;
+}
+
+interface SIConversion {
+    readonly factor: number;
+    readonly offset?: number;
+}
+
+interface PhysicalUnit {
+    readonly symbol: string;
+    readonly dimension: PhysicalDimensionType;
+    readonly name?: string;
+    readonly isBase?: boolean;
+    readonly conversion?: SIConversion;
+}
