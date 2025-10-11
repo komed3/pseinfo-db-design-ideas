@@ -36,6 +36,14 @@ interface BibTeXFields {
     year?: number | string;
 }
 
+type Thesis< T extends 'mastersthesis' | 'thesis' | 'phdthesis' > =
+    BaseFields< T > &
+    StrictSubset<
+        BibTeXFields,
+        'author' | 'title' | 'school' | 'year',
+        'type' | 'address' | 'month' | 'note'
+    >;
+
 export type ArticleReference =
     BaseFields< 'article' > &
     StrictSubset<
@@ -103,14 +111,6 @@ export type ManualReference =
         BibTeXFields,
         'title',
         'author' | 'organization' | 'address' | 'edition' | 'month' | 'year' | 'note'
-    >;
-
-type Thesis< T extends 'mastersthesis' | 'thesis' | 'phdthesis' > =
-    BaseFields< T > &
-    StrictSubset<
-        BibTeXFields,
-        'author' | 'title' | 'school' | 'year',
-        'type' | 'address' | 'month' | 'note'
     >;
 
 export type MastersthesisReference = Thesis< 'mastersthesis' >;
