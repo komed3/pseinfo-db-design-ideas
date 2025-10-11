@@ -149,3 +149,9 @@ export type UnpublishedReference =
         'author' | 'title' | 'note',
         'month' | 'year'
     >;
+
+export type Reference =
+    ArticleReference | BookReference | BookletReference | ConferenceReference |
+    InbookReference | IncollectionReference | InproceedingsReference | ManualReference |
+    MastersthesisReference | ThesisReference | MiscReference | PhdthesisReference |
+    ProceedingsReference | TechreportReference | UnpublishedReference;
