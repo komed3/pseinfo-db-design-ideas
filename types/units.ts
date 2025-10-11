@@ -4,17 +4,157 @@
 
 import {} from './abstract';
 
-export type BaseDimensionType =
-    'time' | 'length' | 'mass' | 'electricCurrent' | 'temperature' |
-    'amountOfSubstance' | 'luminousIntensity';
+interface BaseDimension {
+    name: string;
+    dimension: string;
+    symbol: string;
+}
+
+export interface TimeDimension extends BaseDimension {
+    name: 'time',
+    dimension: 'T';
+    symbol: 't';
+}
+
+export interface LengthDimension extends BaseDimension {
+    name: 'length',
+    dimension: 'L';
+    symbol: 'l';
+}
+
+export interface MassDimension extends BaseDimension {
+    name: 'mass',
+    dimension: 'M';
+    symbol: 'm';
+}
+
+export interface ElectricCurrentDimension extends BaseDimension {
+    name: 'electricCurrent',
+    dimension: 'I';
+    symbol: 'I';
+}
+
+export interface TemperatureDimension extends BaseDimension {
+    name: 'temperature',
+    dimension: 'Θ';
+    symbol: 'T';
+}
+
+export interface AmountOfSubstanceDimension extends BaseDimension {
+    name: 'amountOfSubstance',
+    dimension: 'N';
+    symbol: 'n';
+}
+
+export interface LuminousIntensityDimension extends BaseDimension {
+    name: 'luminousIntensity',
+    dimension: 'J';
+    symbol: 'I{v}';
+}
+
+export interface AreaDimension extends BaseDimension {
+    name: 'area',
+    dimension: 'L[2]';
+    symbol: 'A';
+}
+
+export interface VolumeDimension extends BaseDimension {
+    name: 'volume',
+    dimension: 'L[3]';
+    symbol: 'V';
+}
+
+export interface VelocityDimension extends BaseDimension {
+    name: 'velocity',
+    dimension: 'L·T[-1]';
+    symbol: 'v';
+}
+
+export interface AccelerationDimension extends BaseDimension {
+    name: 'acceleration',
+    dimension: 'L·T[-2]';
+    symbol: 'a';
+}
+
+export interface ForceDimension extends BaseDimension {
+    name: 'force',
+    dimension: 'M·L·T[-2]';
+    symbol: 'F';
+}
+
+export interface EnergyDimension extends BaseDimension {
+    name: 'energy',
+    dimension: 'L[2]·M·T[-2]';
+    symbol: 'E';
+}
+
+export interface PowerDimension extends BaseDimension {
+    name: 'power',
+    dimension: 'M·L[2]·T[-3]';
+    symbol: 'P';
+}
+
+export interface PressureDimension extends BaseDimension {
+    name: 'pressure',
+    dimension: 'M·L[-1]·T[-2]';
+    symbol: 'p';
+}
+
+export interface EnthalpyDimension extends BaseDimension {
+    name: 'enthalpy',
+    dimension: 'M·L[2]·T[-2]';
+    symbol: 'H';
+}
+
+export interface HeatCapacityDimension extends BaseDimension {
+    name: 'heatCapacity',
+    dimension: 'L[2]·M·T[-2]·Θ[-1]';
+    symbol: 'C';
+}
+
+export interface FrequencyDimension extends BaseDimension {
+    name: 'frequency',
+    dimension: 'T[-1]';
+    symbol: 'f';
+}
+
+export interface DensityDimension extends BaseDimension {
+    name: 'density',
+    dimension: 'M·L[-3]';
+    symbol: 'ρ';
+}
+
+export interface ConcentrationDimension extends BaseDimension {
+    name: 'concentration',
+    dimension: 'N·L[-3]';
+    symbol: 'c';
+}
+
+export interface ChargeDimension extends BaseDimension {
+    name: 'charge',
+    dimension: 'T·I';
+    symbol: 'Q';
+}
+
+export interface PotentialDimension extends BaseDimension {
+    name: 'potential',
+    dimension: 'T[-1]·M·L[2]·I[-1]';
+    symbol: 'V';
+}
+
+export type SIDimensionType =
+    TimeDimension | LengthDimension | MassDimension | ElectricCurrentDimension |
+    TemperatureDimension | AmountOfSubstanceDimension | LuminousIntensityDimension;
 
 export type DerivedDimensionType =
-    'area' | 'volume' | 'velocity' | 'acceleration' | 'force' | 'energy' | 'power' |
-    'pressure' | 'enthalpy' | 'frequency' | 'density' | 'concentration' | 'charge' | 'potential';
+    AreaDimension | VolumeDimension | VelocityDimension | AccelerationDimension |
+    ForceDimension | EnergyDimension | PowerDimension | PressureDimension |
+    EnthalpyDimension | HeatCapacityDimension | FrequencyDimension | DensityDimension |
+    ConcentrationDimension | ChargeDimension | PotentialDimension;
 
-export type DimensionType = BaseDimensionType | DerivedDimensionType;
+export type DimensionType = SIDimensionType | DerivedDimensionType;
 
-export const UNITS: Record< DimensionType, Record< string, { text: string, factor: number, offset?: number } > > = {
+export const UNITS: Record< DimensionType[ 'name' ], Record< string, { text: string, factor: number, offset?: number } > > = {
     time: {
         s:      { text: 's', factor: 1 },
         m:      { text: 'min', factor: 60 },
@@ -120,6 +260,14 @@ export const UNITS: Record< DimensionType, Record< string, { text: string, facto
         kJkg:   { text: 'kJ·kg[-1]', factor: 1e3 },
         Jg:     { text: 'J·g[-1]', factor: 1e3 },
         kJmol:  { text: 'kJ·mol[-1]', factor: 1e3 }
+    },
+    heatCapacity: {
+        JK:     { text: 'J·K[-1]', factor: 1 },
+        kJK:    { text: 'kJ·K[-1]', factor: 1e3 },
+        JmolK:  { text: 'J·mol[-1]·K[-1]', factor: 1 },
+        kJmolK: { text: 'kJ·mol[-1]·K[-1]', factor: 1e3 },
+        JkgK:   { text: 'J·kg[-1]·K[-1]', factor: 1e3 },
+        kJkgK:  { text: 'kJ·kg[-1]·K[-1]', factor: 1e6 }
     },
     frequency: {
         Hz:     { text: 'Hz', factor: 1 },
