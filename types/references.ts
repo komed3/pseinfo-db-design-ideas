@@ -1,4 +1,4 @@
-import { RequireAtLeastOne, StrictSubset } from './abstract';
+import { RequireAtLeastOne, RequireExactlyOne, StrictSubset } from './abstract';
 
 export type ReferenceType =
     'article' | 'book' | 'booklet' | 'conference' | 'inbook' | 'incollection' | 'inproceedings' | 'manual' |
@@ -46,11 +46,37 @@ export type ArticleReference =
 
 export type BookReference =
     BaseFields< 'book' > &
+    RequireExactlyOne< BibTeXFields, 'author' | 'editor' > &
+    StrictSubset<
+        BibTeXFields,
+        'title' | 'publisher' | 'year',
+        'volume' | 'number' | 'series' | 'address' | 'edition' | 'month' | 'note' | 'isbn'
+    >;
+
+export type BookletReference =
+    BaseFields< 'booklet' > &
+    StrictSubset<
+        BibTeXFields,
+        'title',
+        'author' | 'howpublished' | 'address' | 'month' | 'year' | 'note'
+    >;
+
+export type ConferenceReference =
+    BaseFields< 'conference' > &
+    StrictSubset<
+        BibTeXFields,
+        'author' | 'title' | 'booktitle' | 'year',
+        'editor' | 'volume' | 'number' | 'series' | 'pages' | 'address' | 'month' | 'organization' | 'publisher' | 'note'
+    >;
+
+export type InbookReference =
+    BaseFields< 'inbook' > &
+    RequireExactlyOne< BibTeXFields, 'author' | 'editor' > &
     RequireAtLeastOne<
         StrictSubset<
             BibTeXFields,
-            'author' | 'editor' | 'title' | 'publisher' | 'year',
-            'volume' | 'number' | 'series' | 'address' | 'edition' | 'month' | 'note' | 'isbn'
+            'title' | 'booktitle' | 'chapter' | 'pages' | 'publisher' | 'year',
+            'volume' | 'number' | 'series' | 'type' | 'address' | 'edition' | 'month' | 'note'
         >,
-        'author' | 'editor'
+        'chapter' | 'pages'
     >;

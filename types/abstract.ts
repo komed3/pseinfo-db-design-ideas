@@ -21,6 +21,10 @@ export type RequireOnlyOne< T extends object, K extends keyof T = keyof T > =
     { [ P in K ]: Required< Pick< T, P > > & Partial< Record< Exclude< K, P >, undefined > > }[ K ] &
     Omit< T, K >;
 
+// Require exactly one property from A or B (XOR), all other properties remain unchanged
+export type RequireExactlyOne< T, K extends keyof T = keyof T > =
+    { [ P in K ]: Required< Pick< T, P > > & { [ Q in Exclude< K, P > ]?: never } & Omit< T, K > }[ K ];
+
 // Make all properties in T required, except for the properties in K which are optional
 export type PartialFrom< T, K extends keyof T > = Omit< T, K > & Partial< Pick< T, K > >;
 
