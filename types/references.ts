@@ -1,4 +1,4 @@
-import { RequireAtLeastOne, RequireExactlyOne, StrictSubset } from './abstract';
+import { ExtractFrom, RequireAtLeastOne, RequireExactlyOne, StrictSubset } from './abstract';
 
 export type ReferenceType =
     'article' | 'book' | 'booklet' | 'conference' | 'inbook' | 'incollection' | 'inproceedings' | 'manual' |
@@ -82,31 +82,70 @@ export type InbookReference =
     >;
 
 export type IncollectionReference =
-    BaseFields< 'incollection' >;
+    BaseFields< 'incollection' > &
+    StrictSubset<
+        BibTeXFields,
+        'author' | 'title' | 'booktitle' | 'publisher' | 'year',
+        'editor' | 'volume' | 'number' | 'series' | 'type' | 'chapter' | 'pages' | 'address' | 'edition' | 'month' | 'note'
+    >;
 
 export type InproceedingsReference =
-    BaseFields< 'inproceedings' >;
+    BaseFields< 'inproceedings' > &
+    StrictSubset<
+        BibTeXFields,
+        'author' | 'title' | 'booktitle' | 'year',
+        'editor' | 'volume' | 'number' | 'series' | 'pages' | 'address' | 'month' | 'organization' | 'publisher' | 'note'
+    >;
 
 export type ManualReference =
-    BaseFields< 'manual' >;
+    BaseFields< 'manual' > &
+    StrictSubset<
+        BibTeXFields,
+        'title',
+        'author' | 'organization' | 'address' | 'edition' | 'month' | 'year' | 'note'
+    >;
 
-export type MastersthesisReference =
-    BaseFields< 'mastersthesis' >;
+type Thesis< T extends 'mastersthesis' | 'thesis' | 'phdthesis' > =
+    BaseFields< T > &
+    StrictSubset<
+        BibTeXFields,
+        'author' | 'title' | 'school' | 'year',
+        'type' | 'address' | 'month' | 'note'
+    >;
 
-export type ThesisReference =
-    BaseFields< 'thesis' >;
+export type MastersthesisReference = Thesis< 'mastersthesis' >;
+
+export type ThesisReference = Thesis< 'thesis' >;
 
 export type MiscReference =
-    BaseFields< 'misc' >;
+    BaseFields< 'misc' > &
+    ExtractFrom<
+        BibTeXFields,
+        'author' | 'title' | 'howpublished' | 'month' | 'year' | 'note'
+    >;
 
-export type PhdthesisReference =
-    BaseFields< 'phdthesis' >;
+export type PhdthesisReference = Thesis< 'phdthesis' >;
 
 export type ProceedingsReference =
-    BaseFields< 'proceedings' >;
+    BaseFields< 'proceedings' > &
+    StrictSubset<
+        BibTeXFields,
+        'title' | 'year',
+        'editor' | 'volume' | 'number' | 'series' | 'address' | 'month' | 'organization' | 'publisher' | 'note'
+    >;
 
 export type TechreportReference =
-    BaseFields< 'techreport' >;
+    BaseFields< 'techreport' > &
+    StrictSubset<
+        BibTeXFields,
+        'author' | 'title' | 'institution' | 'year',
+        'type' | 'number' | 'address' | 'month' | 'note'
+    >;
 
 export type UnpublishedReference =
-    BaseFields< 'unpublished' >;
+    BaseFields< 'unpublished' > &
+    StrictSubset<
+        BibTeXFields,
+        'author' | 'title' | 'note',
+        'month' | 'year'
+    >;
