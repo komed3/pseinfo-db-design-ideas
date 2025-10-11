@@ -8,30 +8,27 @@ export type Primitive = string | number | boolean | symbol | null | undefined;
 // Create a type that is either T or a literal union of U
 export type LiteralUnion< T extends U, U = string > = T | ( U & { _?: never } );
 
-// Get the union of the values of an object type T
+// Get the union of all property values in T
 export type ValueOf< T > = T[ keyof T ];
 
-// Require at least one property from T
-export type RequireAtLeastOne< T, U = { [ K in keyof T ]: Pick< T, K > } > = Partial< T > & U[ keyof U ];
+// Require at least one property from K, all other properties remain unchanged
+export type RequireAtLeastOne< T extends object, K extends keyof T = keyof T > =
+    Pick< T, Exclude< keyof T, K > > &
+    { [ O in K ]: Required< Pick< T, O > > & Partial< Pick< T, Exclude< K, O > > > }[ K ];
 
-// Require exactly one property from T
-export type RequireOnlyOne< T, U = { [ K in keyof T ]: Pick< T, K > } > = Pick< T, Exclude< keyof T, keyof U > > &
-    U[ keyof U ] & Partial< Record< Exclude< keyof T, keyof U >, undefined > >;
+// Require exactly one property from K, all other properties remain unchanged
+export type RequireOnlyOne< T extends object, K extends keyof T = keyof T > =
+    { [ P in K ]: Required< Pick< T, P > > & Partial< Record< Exclude< K, P >, undefined > > }[ K ] &
+    Omit< T, K >;
 
-// Pick some properties from T, those in K
-export type PickOptional< T, K extends keyof T > = Partial< Pick< T, K > >;
+// Make all properties in T required, except for the properties in K which are optional
+export type PartialFrom< T, K extends keyof T > = Omit< T, K > & Partial< Pick< T, K > >;
 
-// Make some properties from T optional, those in K
-export type PartialFrom< T, K extends keyof T > = Omit< T, K > & PickOptional< T, K >;
-
-// Make all properties from T optional, except those in K
+// Make all properties in T optional, except for the properties in K which are required
 export type PartialExcept< T, K extends keyof T > = Partial< T > & Pick< T, K >;
 
-// Make some properties from T optional, those in K, and merge with U
-export type MergeOptional< T, K extends keyof T, U > = PartialFrom< T, K > & U;
-
-// Require all properties from T, but at least some from K
-export type RequireSome< T, K extends keyof T > = PartialFrom< T, K > & { [ P in K ]-?: T[ P ] };
+// Require properties R and make properties O optional, all other properties remain unchanged
+export type StrictSubset< T extends object, R extends keyof T, O extends keyof T > = Required< Pick< T, R > > & Partial< Pick< T, O > >;
 
 // Exclude properties from T that are also in U, making them never
 export type Without< T, U > = { [ P in Exclude< keyof T, keyof U > ]?: never };
