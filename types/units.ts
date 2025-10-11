@@ -49,3 +49,11 @@ interface QuantityUnits< T extends PhysicalDimensionType > {
 export type PhysicalQuantities = Partial< {
     readonly [ K in PhysicalDimensionType ]: QuantityUnits< K >;
 } >;
+
+// Get the keys of units for a specific physical quantity Q in T
+type UnitsForQuantity< T extends PhysicalQuantities, Q extends keyof T > =
+    T[ Q ] extends { units: Record< string, any > } ? keyof T[ Q ][ 'units' ] : never;
+
+// A reference to a specific unit for a physical quantity
+export type UnitReference< T extends PhysicalQuantities = PhysicalQuantities, Q extends keyof T = keyof T > =
+    readonly [ Q, UnitsForQuantity< T, Q > ];
