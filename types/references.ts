@@ -1,8 +1,9 @@
 import { ExtractFrom, RequireAtLeastOne, RequireExactlyOne, StrictSubset } from './abstract';
 
 export type ReferenceType =
-    'article' | 'book' | 'booklet' | 'conference' | 'inbook' | 'incollection' | 'inproceedings' | 'manual' |
-    'mastersthesis' | 'thesis' | 'misc' | 'phdthesis' | 'proceedings' | 'techreport' | 'unpublished';
+    'article' | 'book' | 'booklet' | 'conference' | 'inbook' | 'incollection' |
+    'inproceedings' | 'manual' | 'mastersthesis' | 'thesis' | 'misc' | 'phdthesis' |
+    'proceedings' | 'techreport' | 'unpublished';
 
 interface BaseFields< T extends ReferenceType > {
     type: T;
