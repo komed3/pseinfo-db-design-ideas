@@ -1,3 +1,3 @@
-import {} from './abstract';
-
-
+export type BaseDimension =
+    'time' | 'length' | 'mass' | 'electricCurrent' | 'temperature' |
+    'amountOfSubstance' | 'luminousIntensity';
