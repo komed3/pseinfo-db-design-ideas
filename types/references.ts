@@ -1,4 +1,15 @@
-import {} from './abstract';
+import { RequireAtLeastOne, StrictSubset } from './abstract';
+
+export type ReferenceType =
+    'article' | 'book' | 'booklet' | 'conference' | 'inbook' | 'incollection' | 'inproceedings' | 'manual' |
+    'mastersthesis' | 'thesis' | 'misc' | 'phdthesis' | 'proceedings' | 'techreport' | 'unpublished';
+
+interface BaseFields< T extends ReferenceType > {
+    type: T;
+    accessed?: string;
+    url?: string;
+    doi?: string;
+}
 
 interface BibTeXFields {
     address?: string;
@@ -25,8 +36,21 @@ interface BibTeXFields {
     year?: number | string;
 }
 
-interface ExtraFields {
-    accessed?: string;
-    url?: string;
-    doi?: string;
-}
+export type ArticleReference =
+    BaseFields< 'article' > &
+    StrictSubset<
+        BibTeXFields,
+        'author' | 'title' | 'journal' | 'year',
+        'volume' | 'number' | 'pages' | 'month' | 'note'
+    >;
+
+export type BookReference =
+    BaseFields< 'book' > &
+    RequireAtLeastOne<
+        StrictSubset<
+            BibTeXFields,
+            'author' | 'editor' | 'title' | 'publisher' | 'year',
+            'volume' | 'number' | 'series' | 'address' | 'edition' | 'month' | 'note' | 'isbn'
+        >,
+        'author' | 'editor'
+    >;
