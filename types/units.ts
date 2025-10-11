@@ -24,10 +24,20 @@ interface SIConversion {
     readonly offset?: number;
 }
 
-interface PhysicalUnit {
+interface PhysicalUnit< T extends PhysicalDimensionType > {
     readonly symbol: string;
-    readonly dimension: PhysicalDimensionType;
+    readonly dimension: T;
     readonly name?: string;
     readonly isBase?: boolean;
     readonly conversion?: SIConversion;
 }
+
+interface QuantityUnits< T extends PhysicalDimensionType > {
+    readonly dimension: PhysicalDimension;
+    readonly baseUnit: string;
+    readonly units: Record< string, PhysicalUnit< T > >;
+}
+
+export type PhysicalQuantities = {
+    readonly [ K in PhysicalDimensionType ]: QuantityUnits< K >;
+};
