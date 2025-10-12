@@ -2,7 +2,9 @@
  * Complex Physical Values
  */
 
-import { OneOrMany } from './abstract';
+import { RequireAtLeastOne } from './abstract';
+import { FormId } from './form';
+import { RefId } from './reference';
 import { Uncertainty } from './uncertainty';
 import { PhysicalQuantity, UnitId } from './unit';
 
@@ -14,10 +16,33 @@ export type ValueConfidence = 'measured' | 'calculated' | 'estimated' | 'theoret
 
 // Value under specific conditions
 interface ConditionValue {
-  value: number;
-  unit_ref?: UnitId;
-  uncertainty?: Uncertainty;
-  note?: string;
+    value: number;
+    unit_ref?: UnitId;
+    uncertainty?: Uncertainty;
+    note?: string;
 }
 
-type Conditions = Partial< Record< PhysicalQuantity, OneOrMany< ConditionValue > > >;
+type Conditions = Partial< Record< PhysicalQuantity, ConditionValue[] > >;
+
+// Base fields for all value types
+interface BaseFields< T extends ValueType > {
+    type: T;
+    confidence?: ValueConfidence;
+    form_refs?: FormId[];
+    uncertainty?: Uncertainty;
+    conditions?: Conditions;
+    references?: RefId[];
+    note?: string;
+}
+
+// Fields specific to value types
+interface ValueFields {
+    value?: number;
+    values?: number[];
+    range?: RequireAtLeastOne< Record< 'lower' | 'upper', {
+        value: number;
+        uncertainty?: Uncertainty;
+        inclusive?: boolean;
+    } > >;
+    unit_ref?: UnitId;
+}
