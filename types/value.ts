@@ -2,7 +2,7 @@
  * Complex Physical Values
  */
 
-import { RequireAtLeastOne } from './abstract';
+import { RequireAtLeastOne, StrictSubset } from './abstract';
 import { FormId } from './form';
 import { RefId } from './reference';
 import { Uncertainty } from './uncertainty';
@@ -46,3 +46,12 @@ interface ValueFields {
     } > >;
     unit_ref?: UnitId;
 }
+
+// Single value type
+export type SingleValue = BaseFields< 'single' > & StrictSubset< ValueFields, 'value', 'unit_ref' >;
+
+// Array of values type
+export type ArrayValue = BaseFields< 'array' > & StrictSubset< ValueFields, 'values', 'unit_ref' >;
+
+// Range of values type
+export type RangeValue = BaseFields< 'range' > & StrictSubset< ValueFields, 'value' | 'range', 'unit_ref' >;
