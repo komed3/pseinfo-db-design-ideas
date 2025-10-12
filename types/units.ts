@@ -20,35 +20,33 @@ export type PhysicalDimensionType = SIDimensionType | DerivedDimensionType;
 
 // A vector representing the powers of each base dimension in the order:
 // [ time, length, mass, electricCurrent, temperature, amountOfSubstance, luminousIntensity ]
-type PhysicalDimensionVector = readonly [ number, number, number, number, number, number, number ];
+type PhysicalDimensionVector = [ number, number, number, number, number, number, number ];
 
 // Interface describing a physical unit
 interface PhysicalUnit< T extends PhysicalDimensionType > {
-    readonly symbol: string;
-    readonly dimension: T;
-    readonly name?: string;
-    readonly isBase?: boolean;
-    readonly conversion?: {
-        readonly factor: number;
-        readonly offset?: number;
+    symbol: string;
+    dimension: T;
+    name?: string;
+    isBase?: boolean;
+    conversion?: {
+        factor: number;
+        offset?: number;
     };
 }
 
 // Collection of units for a specific physical dimension
 interface QuantityUnits< T extends PhysicalDimensionType > {
-    readonly dimension: {
-        readonly symbol: string;
-        readonly name: string;
-        readonly vector: PhysicalDimensionVector;
+    dimension: {
+        symbol: string;
+        name: string;
+        vector: PhysicalDimensionVector;
     };
-    readonly baseUnit: string;
-    readonly units: Record< string, PhysicalUnit< T > >;
+    baseUnit: string;
+    units: Record< string, PhysicalUnit< T > >;
 }
 
 // Collection of physical quantities
-export type PhysicalQuantities = Partial< {
-    readonly [ K in PhysicalDimensionType ]: QuantityUnits< K >;
-} >;
+export type PhysicalQuantities = Partial< { [ K in PhysicalDimensionType ]: QuantityUnits< K > } >;
 
 // Get the keys of units for a specific physical quantity Q in T
 type UnitsForQuantity< T extends PhysicalQuantities, Q extends keyof T > =
@@ -56,4 +54,4 @@ type UnitsForQuantity< T extends PhysicalQuantities, Q extends keyof T > =
 
 // A reference to a specific unit for a physical quantity
 export type UnitReference< T extends PhysicalQuantities = PhysicalQuantities, Q extends keyof T = keyof T > =
-    readonly [ Q, UnitsForQuantity< T, Q > ];
+    [ Q, UnitsForQuantity< T, Q > ];
