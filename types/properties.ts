@@ -1,20 +1,18 @@
 import { RequireAtLeastOne } from './abstract';
+import { References } from './references';
+import { Uncertainty } from './uncertainty';
 import { PhysicalDimension, PhysicalQuantities, UnitReference } from './units';
 
 export type ValueOrigin =
     'measured' | 'calculated' | 'estimated' | 'theoretical' | 'experimental' | 'literature' |
     'recommended' | 'critical' | 'standard' | 'extrapolated' | 'interpolated';
 
-interface Uncertainty {
-    deviation?: number;
-}
-
 interface BaseValue< T extends PhysicalDimension = PhysicalDimension > {
     origin?: ValueOrigin;
-    form_refs?: ;
+    form_refs?: any;
     unit_ref?: UnitReference< PhysicalQuantities, T >;
-    conditions?: ;
-    references?: string[];
+    conditions?: any;
+    references?: Array< keyof References >;
     note?: string;
 }
 
@@ -32,13 +30,3 @@ export interface RangeValue< T extends PhysicalDimension = PhysicalDimension > e
         inclusive?: boolean;
     } > >;
 }
-
-const test: RangeValue< 'mass' > = {
-    value: 1.0008,
-    range: {
-        lower: { value: 1, inclusive: true },
-        upper: { value: 1.001, uncertainty: { deviation: 2e-4 } }
-    },
-    unit_ref: [ 'mass', 'u' ],
-    origin: 'standard'
-};
