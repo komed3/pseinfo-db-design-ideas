@@ -55,3 +55,11 @@ export type ArrayValue = BaseFields< 'array' > & StrictSubset< ValueFields, 'val
 
 // Range of values type
 export type RangeValue = BaseFields< 'range' > & StrictSubset< ValueFields, 'value' | 'range', 'unit_ref' >;
+
+// Coupled values type (e.g., multiple related properties)
+export type CoupledValue = BaseFields< 'coupled' > & {
+    properties: RequireAtLeastOne< Record< PhysicalQuantity, SingleValue | ArrayValue | RangeValue > >
+};
+
+// Union type for all value types
+export type Value = SingleValue | ArrayValue | RangeValue | CoupledValue;
