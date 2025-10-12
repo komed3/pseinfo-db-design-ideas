@@ -31,7 +31,7 @@ interface Unit< Q extends PhysicalQuantity > {
     };
 }
 
-// Collection of units for a specific physical dimension
+// Interface describing a physical quantity and its units
 interface Quantity< Q extends PhysicalQuantity > {
     dimension: {
         symbol: string;
@@ -41,3 +41,9 @@ interface Quantity< Q extends PhysicalQuantity > {
     baseUnit: string;
     units: Record< string, Unit< Q > >;
 }
+
+// Collection of physical quantities
+export type QuantityCollection = { [ Q in PhysicalQuantity ]: Quantity< Q > };
+
+// Reference IDs used in other parts of the data model
+export type UnitId< Q extends PhysicalQuantity = PhysicalQuantity > = [ Q, string ];
