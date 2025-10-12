@@ -176,3 +176,6 @@ export type Reference =
     InbookReference | IncollectionReference | InproceedingsReference | ManualReference |
     MastersthesisReference | ThesisReference | MiscReference | PhdthesisReference |
     ProceedingsReference | TechreportReference | UnpublishedReference;
+
+// Collection of references indexed by a unique key
+export type References = Record< string, Reference >;
