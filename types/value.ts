@@ -2,14 +2,14 @@
  * Complex Physical Values
  */
 
-import { RequireAtLeastOne, StrictSubset } from './abstract';
+import { Primitive, RequireAtLeastOne, StrictSubset } from './abstract';
 import { FormId } from './form';
 import { RefId } from './reference';
 import { Uncertainty } from './uncertainty';
 import { PhysicalQuantity, UnitId } from './unit';
 
 // Type of value
-export type ValueType = 'single' | 'array' | 'range' | 'coupled';
+export type ValueType = 'single' | 'primitive' | 'array' | 'range' | 'coupled';
 
 // Value confidence / origin of the value
 export type ValueConfidence = 'measured' | 'calculated' | 'estimated' | 'theoretical' | 'experimental';
@@ -50,6 +50,9 @@ interface ValueFields {
 // Single value type
 export type SingleValue = BaseFields< 'single' > & StrictSubset< ValueFields, 'value', 'unit_ref' >;
 
+// Primitive value type
+export type PrimitiveValue = BaseFields< 'primitive' > & { value: Primitive };
+
 // Array of values type
 export type ArrayValue = BaseFields< 'array' > & StrictSubset< ValueFields, 'values', 'unit_ref' >;
 
@@ -58,7 +61,9 @@ export type RangeValue = BaseFields< 'range' > & StrictSubset< ValueFields, 'val
 
 // Coupled values type (e.g., multiple related properties)
 export type CoupledValue = BaseFields< 'coupled' > & {
-    properties: RequireAtLeastOne< Record< PhysicalQuantity, SingleValue | ArrayValue | RangeValue > >
+    properties: RequireAtLeastOne< Record< PhysicalQuantity,
+        SingleValue | PrimitiveValue | ArrayValue | RangeValue
+    > >
 };
 
 // Union type for all value types
