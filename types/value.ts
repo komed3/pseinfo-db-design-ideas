@@ -9,7 +9,7 @@ import { Uncertainty } from './uncertainty';
 import { PhysicalQuantity, UnitId } from './unit';
 
 // Type of value
-export type ValueType = 'single' | 'primitive' | 'array' | 'range' | 'coupled';
+export type ValueType = 'primitive' | 'single' | 'array' | 'range' | 'coupled';
 
 // Value confidence / origin of the value
 export type ValueConfidence = 'measured' | 'calculated' | 'estimated' | 'theoretical' | 'experimental';
@@ -47,11 +47,11 @@ interface ValueFields {
     unit_ref?: UnitId;
 }
 
-// Single value type
-export type SingleValue = BaseFields< 'single' > & StrictSubset< ValueFields, 'value', 'unit_ref' >;
-
 // Primitive value type
 export type PrimitiveValue = BaseFields< 'primitive' > & { value: Primitive };
+
+// Single value type
+export type SingleValue = BaseFields< 'single' > & StrictSubset< ValueFields, 'value', 'unit_ref' >;
 
 // Array of values type
 export type ArrayValue = BaseFields< 'array' > & StrictSubset< ValueFields, 'values', 'unit_ref' >;
@@ -62,9 +62,9 @@ export type RangeValue = BaseFields< 'range' > & StrictSubset< ValueFields, 'val
 // Coupled values type (e.g., multiple related properties)
 export type CoupledValue = BaseFields< 'coupled' > & {
     properties: RequireAtLeastOne< Record< PhysicalQuantity,
-        SingleValue | PrimitiveValue | ArrayValue | RangeValue
+        PrimitiveValue | SingleValue | ArrayValue | RangeValue
     > >
 };
 
 // Union type for all value types
-export type Value = SingleValue | ArrayValue | RangeValue | CoupledValue;
+export type Value = PrimitiveValue | SingleValue | ArrayValue | RangeValue | CoupledValue;
