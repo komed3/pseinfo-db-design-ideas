@@ -179,3 +179,6 @@ export type Reference =
 
 // Collection of references indexed by a unique key
 export type References = Record< string, Reference >;
+
+// Type for reference IDs used in other parts of the data model
+export type RefId = keyof References;

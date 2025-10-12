@@ -1,5 +1,5 @@
 import { RequireAtLeastOne } from './abstract';
-import { References } from './references';
+import { RefId } from './references';
 import { Uncertainty } from './uncertainty';
 import { PhysicalDimension, PhysicalQuantities, UnitReference } from './units';
 
@@ -13,12 +13,17 @@ interface BaseValue< T, D extends PhysicalDimension = PhysicalDimension > {
     form_refs?: any;
     unit_ref?: UnitReference< PhysicalQuantities, D >;
     conditions?: any;
-    references?: Array< keyof References >;
+    references?: RefId[];
     note?: string;
 }
 
 export interface SingleValue< D extends PhysicalDimension = PhysicalDimension > extends BaseValue< 'single', D > {
     value: number;
+    uncertainty?: Uncertainty;
+}
+
+export interface ArrayValue< D extends PhysicalDimension = PhysicalDimension > extends BaseValue< 'array', D > {
+    values: number[];
     uncertainty?: Uncertainty;
 }
 
