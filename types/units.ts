@@ -49,6 +49,6 @@ export type PhysicalQuantities = { [ K in PhysicalDimension ]: QuantityUnits< K 
 type UnitsForQuantity< T extends PhysicalQuantities, Q extends keyof T > =
     T[ Q ] extends { units: Record< string, any > } ? keyof T[ Q ][ 'units' ] : never;
 
-// A reference to a specific unit for a physical quantity
-export type UnitReference< T extends PhysicalQuantities = PhysicalQuantities, Q extends keyof T = keyof T > =
+// Reference IDs used in other parts of the data model
+export type UnitId< T extends PhysicalQuantities = PhysicalQuantities, Q extends keyof T = keyof T > =
     [ Q, UnitsForQuantity< T, Q > ];
