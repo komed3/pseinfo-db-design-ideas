@@ -18,3 +18,26 @@ export type PhysicalQuantity = SIDimension |
 // A vector representing the powers of each base dimension in the order:
 // [ time, length, mass, electricCurrent, temperature, amountOfSubstance, luminousIntensity ]
 type DimensionVector = [ number, number, number, number, number, number, number ];
+
+// Interface describing a physical unit
+interface Unit< Q extends PhysicalQuantity > {
+    symbol: string;
+    quantity: Q;
+    name?: string;
+    isBase?: boolean;
+    conversion?: {
+        factor: number;
+        offset?: number;
+    };
+}
+
+// Collection of units for a specific physical dimension
+interface Quantity< Q extends PhysicalQuantity > {
+    dimension: {
+        symbol: string;
+        name: string;
+        vector: DimensionVector;
+    };
+    baseUnit: string;
+    units: Record< string, Unit< Q > >;
+}
