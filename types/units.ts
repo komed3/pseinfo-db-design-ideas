@@ -7,16 +7,13 @@ export type SIDimensionType =
     'time' | 'length' | 'mass' | 'electricCurrent' | 'temperature' |
     'amountOfSubstance' | 'luminousIntensity';
 
-// Derived physical dimensions
-export type DerivedDimensionType =
+// All physical dimensions
+export type PhysicalDimensionType = SIDimensionType |
     'area' | 'volume' | 'velocity' | 'acceleration' | 'force' | 'energy' |
     'power' | 'pressure' | 'enthalpy' | 'heatCapacity' | 'frequency' | 'density' |
     'concentration' | 'charge' | 'potential' | 'resistance' | 'conductance' |
     'capacitance' | 'magneticFlux' | 'magneticFieldStrength' | 'inductance' |
     'radioactivity' | 'absorbedDose' | 'equivalentDose' | 'catalyticActivity';
-
-// All physical dimensions
-export type PhysicalDimensionType = SIDimensionType | DerivedDimensionType;
 
 // A vector representing the powers of each base dimension in the order:
 // [ time, length, mass, electricCurrent, temperature, amountOfSubstance, luminousIntensity ]
