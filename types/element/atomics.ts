@@ -4,7 +4,7 @@
 
 import { ArrayProperty, Group, MapPropertyDefinition, NumberProperty, PrimitiveProperty, Single } from '../property';
 
-// Atomics property group names
+// Atomics property names
 export type AtomicsPropertyGroup = 'mass' | 'radius';
 
 export type AtomicsProperty =

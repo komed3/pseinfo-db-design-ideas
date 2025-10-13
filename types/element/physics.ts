@@ -4,7 +4,7 @@
 
 import { Group, MapPropertyDefinition, NumberProperty, PrimitiveProperty, Single } from '../property';
 
-// Physics property group names
+// Physics property names
 export type PhysicsPropertyGroup =
     'temperature' | 'enthalpy' | 'heat' | 'hardness' | 'elasticity' | 'electricity' |
     'magnetism' | 'optics';

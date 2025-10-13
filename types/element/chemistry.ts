@@ -4,7 +4,7 @@
 
 import { Group, MapPropertyDefinition, NumberProperty, PrimitiveProperty, Single } from '../property';
 
-// Chemistry property group names
+// Chemistry property names
 export type ChemistryPropertyGroup = 'electronegativity';
 
 export type ChemistryProperty =

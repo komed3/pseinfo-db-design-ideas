@@ -4,7 +4,7 @@
 
 import { Distinct, Group, LangGroup, MapPropertyDefinition, NumberProperty, PrimitiveProperty, Single } from '../property';
 
-// Descriptive property group names
+// Descriptive property names
 export type DescriptivePropertyGroup = 'registry' | 'abundance' | 'discovery' | 'media';
 
 export type DescriptiveProperty =

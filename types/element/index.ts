@@ -4,6 +4,7 @@
 
 import { AtomicsCollection } from './atomics';
 import { ChemistryCollection } from './chemistry';
+import { ClassificationCollection } from './classification';
 import { DescriptiveCollection } from './descriptive';
 import { PhysicsCollection } from './physics';
 
@@ -23,6 +24,7 @@ export type ElementSymbol =
 export type ElementCollection = Record< ElementSymbol, {
     atomics: AtomicsCollection;
     chemistry: ChemistryCollection;
+    classification: ClassificationCollection;
     descriptive: DescriptiveCollection;
     physics: PhysicsCollection;
 } >;
