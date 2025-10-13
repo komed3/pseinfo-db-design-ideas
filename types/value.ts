@@ -57,7 +57,7 @@ export type SingleValue = BaseFields< 'single' > & StrictSubset< ValueFields, 'v
 export type ArrayValue = BaseFields< 'array' > & StrictSubset< ValueFields, 'values', 'unit_ref' >;
 
 // Range of values type
-export type RangeValue = BaseFields< 'range' > & StrictSubset< ValueFields, 'value' | 'range', 'unit_ref' >;
+export type RangeValue = BaseFields< 'range' > & StrictSubset< ValueFields, 'range', 'value' | 'unit_ref' >;
 
 // Coupled values type (e.g., multiple related properties)
 export type CoupledValue = BaseFields< 'coupled' > & {

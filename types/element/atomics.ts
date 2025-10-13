@@ -13,17 +13,17 @@ export type AtomicsProperty =
 
 // Collection of atomics properties
 export type AtomicsCollection = MapPropertyDefinition< {
-    electronConfig: Single< PrimitiveProperty >;
-    shellModel: Single< ArrayProperty >;
-    ionization: Single< ArrayProperty >;
-    mass: Group< {
-        atomicMass: Single< NumberProperty >;
-        stdAtomicWeight: Single< NumberProperty >;
+    electronConfig?: Single< PrimitiveProperty >;
+    shellModel?: Single< ArrayProperty >;
+    ionization?: Single< ArrayProperty >;
+    mass?: Group< {
+        atomicMass?: Single< NumberProperty >;
+        stdAtomicWeight?: Single< NumberProperty >;
     } >;
-    radius: Group< {
-        calculatedRadius: Single< NumberProperty >;
-        covalentRadius: Single< NumberProperty >;
-        empiricalRadius: Single< NumberProperty >;
-        vdwRadius: Single< NumberProperty >;
+    radius?: Group< {
+        calculatedRadius?: Single< NumberProperty >;
+        covalentRadius?: Single< NumberProperty >;
+        empiricalRadius?: Single< NumberProperty >;
+        vdwRadius?: Single< NumberProperty >;
     } >;
 } >;
