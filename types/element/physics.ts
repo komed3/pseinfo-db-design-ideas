@@ -4,7 +4,7 @@ export type PhysicsPropertyGroup =
     'density' | 'phase' | 'soundSpeed' | 'temperature' | 'enthalpy' | 'heat' |
     'hardness' | 'elasticity' | 'electricity' | 'magnetism' | 'optics';
 
-export type PhysicsPropertyName =
+export type PhysicsProperty =
     'density' | 'phase' | 'soundSpeed' | 'boilingTemp' | 'liquidTemp' | 'meltingTemp' | 'transitionTemp' |
     'sublimationTemp' | 'triplePoint' | 'atomizationEnthalpy' | 'fusionEnthalpy' | 'vaporisationEnthalpy' |
     'heatCapacity' | 'thermalConductivity' | 'thermalExpansion' | 'workFunction' | 'brinellHardness' |
