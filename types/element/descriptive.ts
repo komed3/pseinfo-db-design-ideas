@@ -5,17 +5,28 @@
 import { Distinct, Group, LangGroup, MapPropertyDefinition, NumberProperty, PrimitiveProperty, Single } from '../property';
 
 // Descriptive property group names
-export type DescriptivePropertyGroup = 'abundance' | 'discovery' | 'media';
+export type DescriptivePropertyGroup = 'registry' | 'abundance' | 'discovery' | 'media';
 
 export type DescriptiveProperty =
-    'names' | 'appearance' | 'universeAbundance' | 'sunAbundance' | 'meteoriteAbundance' |
-    'crustalAbundance' | 'seaAbundance' | 'streamAbundance' | 'humanAbundance' | 'year' |
-    'discoverer' | 'country' | 'era' | 'images' | 'spectrum' | 'weblinks' | 'wiki';
+    'names' | 'appearance' | 'cas' | 'inChI' | 'inChIkey' | 'cid' | 'echa' | 'eg' | 'wikidata' |
+    'rtecs' | 'universeAbundance' | 'sunAbundance' | 'meteoriteAbundance' | 'crustalAbundance' |
+    'seaAbundance' | 'streamAbundance' | 'humanAbundance' | 'year' | 'discoverer' | 'country' |
+    'era' | 'properties' | 'images' | 'spectrum' | 'price' | 'weblinks' | 'wiki';
 
 // Collection of descriptive properties
 export type DescriptiveCollection = MapPropertyDefinition< {
-    names?: LangGroup;
+    names: LangGroup;
     appearance?: LangGroup;
+    registry: Group< {
+        cas: Single< PrimitiveProperty >;
+        inChI: Single< PrimitiveProperty >;
+        inChIkey: Single< PrimitiveProperty >;
+        cid: Single< PrimitiveProperty >;
+        echa?: Single< PrimitiveProperty >;
+        eg?: Single< PrimitiveProperty >;
+        wikidata?: Single< PrimitiveProperty >;
+        rtecs?: Single< PrimitiveProperty >;
+    } >;
     abundance?: Group< {
         universeAbundance?: Single< NumberProperty >;
         sunAbundance?: Single< NumberProperty >;

@@ -25,7 +25,7 @@ export type Group< T extends Record< string, unknown > > = T;
 export type Distinct< T > = T;
 
 // Helper types
-export type LangGroup = Group< Record< LiteralUnion< 'en' | 'la' | 'de' | 'fr' >, Distinct< string > > >;
+export type LangGroup = Group< Record< LiteralUnion< 'en' | 'la' >, Distinct< string > > >;
 
 // Generic property collection mapper
 export type MapPropertyDefinition< T > = { [ K in keyof T ]: 
