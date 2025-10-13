@@ -6,16 +6,18 @@ import { Group, MapPropertyDefinition, NumberProperty, PrimitiveProperty, Single
 
 // Physics property group names
 export type PhysicsPropertyGroup =
-    'density' | 'phase' | 'soundSpeed' | 'temperature' | 'enthalpy' | 'heat' |
-    'hardness' | 'elasticity' | 'electricity' | 'magnetism' | 'optics';
+    'temperature' | 'enthalpy' | 'heat' | 'hardness' | 'elasticity' | 'electricity' |
+    'magnetism' | 'optics';
 
 export type PhysicsProperty =
-    'density' | 'phase' | 'soundSpeed' | 'boilingTemp' | 'liquidTemp' | 'meltingTemp' | 'transitionTemp' |
-    'sublimationTemp' | 'triplePoint' | 'atomizationEnthalpy' | 'fusionEnthalpy' | 'vaporisationEnthalpy' |
-    'heatCapacity' | 'thermalConductivity' | 'thermalExpansion' | 'workFunction' | 'brinellHardness' |
-    'mohsHardness' | 'vickersHardness' | 'bulkModulus' | 'poissonPoint' | 'youngModulus' | 'shearModulus' |
-    'electricalConductivity' | 'electricalResistivity' | 'magneticOrdering' | 'magneticSusceptibility' |
-    'curiePoint' | 'neelPoint' | 'reflectance' | 'refractiveIndex';
+    'density' | 'phase' | 'soundSpeed' | 'boilingTemp' | 'liquidTemp' | 'meltingTemp' |
+    'transitionTemp' | 'sublimationTemp' | 'triplePoint' | 'atomizationEnthalpy' |
+    'fusionEnthalpy' | 'vaporisationEnthalpy' | 'heatCapacity' | 'thermalConductivity' |
+    'thermalExpansion' | 'workFunction' | 'brinellHardness' | 'mohsHardness' |
+    'vickersHardness' | 'bulkModulus' | 'poissonPoint' | 'youngModulus' | 'shearModulus' |
+    'electricalConductivity' | 'electricalResistivity' | 'magneticOrdering' |
+    'magneticSusceptibility' | 'curiePoint' | 'neelPoint' | 'reflectance' |
+    'refractiveIndex';
 
 // Collection of physics properties
 export type PhysicsCollection = MapPropertyDefinition< {

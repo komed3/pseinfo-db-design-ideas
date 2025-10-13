@@ -5,9 +5,7 @@
 import { Group, MapPropertyDefinition, NumberProperty, PrimitiveProperty, Single } from '../property';
 
 // Chemistry property group names
-export type ChemistryPropertyGroup =
-    'molarMass' | 'basicity' | 'electronegativity' | 'oxidationState' | 'oxideCharacter' |
-    'standardPotential';
+export type ChemistryPropertyGroup = 'electronegativity';
 
 export type ChemistryProperty =
     'molarMass' | 'basicity' | 'paulingNegativity' | 'sandersonNegativity' | 'allredNegativity' |

@@ -5,13 +5,12 @@
 import { Distinct, Group, LangGroup, MapPropertyDefinition, NumberProperty, Single } from '../property';
 
 // Descriptive property group names
-export type DescriptivePropertyGroup =
-    'names' | 'appearance' | 'abundance' | 'discovery' | 'weblinks';
+export type DescriptivePropertyGroup = 'abundance' | 'discovery';
 
 export type DescriptiveProperty =
     'names' | 'appearance' | 'universeAbundance' | 'sunAbundance' | 'meteoriteAbundance' |
     'crustalAbundance' | 'seaAbundance' | 'streamAbundance' | 'humanAbundance' | 'year' |
-    'discoverer' | 'country' | 'era' | 'weblinks';
+    'discoverer' | 'country' | 'era' | 'weblinks' | 'wiki';
 
 // Collection of descriptive properties
 export type DescriptiveCollection = MapPropertyDefinition< {
@@ -32,5 +31,11 @@ export type DescriptiveCollection = MapPropertyDefinition< {
         country: Distinct< string >;
         era: Distinct< string >;
     } >;
-    weblinks: Distinct< { url: string, text?: string }[] >
+    weblinks: Distinct< {
+        url: string;
+        text?: string;
+        accessed?: string;
+        archive?: string;
+    }[] >;
+    wiki: LangGroup;
 } >;
