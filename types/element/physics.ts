@@ -1,4 +1,4 @@
-import { NumberProperty, NumberPropertyGroup, PrimitiveProperty, PropertyCollection, PropertyGroup } from '../property';
+import { NumberProperty, NumberPropertyGroup, PrimitiveProperty, PropertyCollection } from '../property';
 
 export type PhysicsPropertyGroup =
     'density' | 'phase' | 'soundSpeed' | 'temperature' | 'enthalpy' | 'heat' |
@@ -18,12 +18,12 @@ export interface PhysicsCollection extends PropertyCollection< PhysicsPropertyGr
     soundSpeed?: NumberProperty;
     temperature?: NumberPropertyGroup< 'boilingTemp' | 'liquidTemp' | 'meltingTemp' | 'transitionTemp' | 'sublimationTemp' | 'triplePoint' >;
     enthalpy?: NumberPropertyGroup< 'atomizationEnthalpy' | 'fusionEnthalpy' | 'vaporisationEnthalpy' >;
-    heat?: PropertyGroup< 'heatCapacity' | 'thermalConductivity' | 'thermalExpansion' | 'workFunction' >;
-    hardness?: PropertyGroup< 'brinellHardness' | 'mohsHardness' | 'vickersHardness' >;
-    elasticity?: PropertyGroup< 'bulkModulus' | 'poissonPoint' | 'youngModulus' | 'shearModulus' >;
-    electricity?: PropertyGroup< 'electricalConductivity' | 'electricalResistivity' >;
-    magnetism?: PropertyGroup< 'magneticSusceptibility' | 'curiePoint' | 'neelPoint' > & {
+    heat?: NumberPropertyGroup< 'heatCapacity' | 'thermalConductivity' | 'thermalExpansion' | 'workFunction' >;
+    hardness?: NumberPropertyGroup< 'brinellHardness' | 'mohsHardness' | 'vickersHardness' >;
+    elasticity?: NumberPropertyGroup< 'bulkModulus' | 'poissonPoint' | 'youngModulus' | 'shearModulus' >;
+    electricity?: NumberPropertyGroup< 'electricalConductivity' | 'electricalResistivity' >;
+    magnetism?: NumberPropertyGroup< 'magneticSusceptibility' | 'curiePoint' | 'neelPoint' > & {
         magneticOrdering?: PrimitiveProperty;
     };
-    optics?: PropertyGroup< 'reflectance' | 'refractiveIndex' >;
+    optics?: NumberPropertyGroup< 'reflectance' | 'refractiveIndex' >;
 }
