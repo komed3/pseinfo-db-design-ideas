@@ -1,4 +1,4 @@
-import { NumberProperty, NumberPropertyGroup, PrimitiveProperty, PropertyCollection } from '../property';
+import { Group, MapPropertyDefinition, NumberProperty, PrimitiveProperty, Single } from '../property';
 
 export type PhysicsPropertyGroup =
     'density' | 'phase' | 'soundSpeed' | 'temperature' | 'enthalpy' | 'heat' |
@@ -12,18 +12,52 @@ export type PhysicsPropertyName =
     'electricalConductivity' | 'electricalResistivity' | 'magneticOrdering' | 'magneticSusceptibility' |
     'curiePoint' | 'neelPoint' | 'reflectance' | 'refractiveIndex';
 
-export interface PhysicsCollection extends PropertyCollection< PhysicsPropertyGroup, PhysicsPropertyName > {
-    density?: NumberProperty;
-    phase?: PrimitiveProperty;
-    soundSpeed?: NumberProperty;
-    temperature?: NumberPropertyGroup< 'boilingTemp' | 'liquidTemp' | 'meltingTemp' | 'transitionTemp' | 'sublimationTemp' | 'triplePoint' >;
-    enthalpy?: NumberPropertyGroup< 'atomizationEnthalpy' | 'fusionEnthalpy' | 'vaporisationEnthalpy' >;
-    heat?: NumberPropertyGroup< 'heatCapacity' | 'thermalConductivity' | 'thermalExpansion' | 'workFunction' >;
-    hardness?: NumberPropertyGroup< 'brinellHardness' | 'mohsHardness' | 'vickersHardness' >;
-    elasticity?: NumberPropertyGroup< 'bulkModulus' | 'poissonPoint' | 'youngModulus' | 'shearModulus' >;
-    electricity?: NumberPropertyGroup< 'electricalConductivity' | 'electricalResistivity' >;
-    magnetism?: NumberPropertyGroup< 'magneticSusceptibility' | 'curiePoint' | 'neelPoint' > & {
-        magneticOrdering?: PrimitiveProperty;
-    };
-    optics?: NumberPropertyGroup< 'reflectance' | 'refractiveIndex' >;
-}
+export type PhysicsCollection = MapPropertyDefinition< {
+    density: Single< NumberProperty >;
+    phase: Single< PrimitiveProperty >;
+    soundSpeed: Single< NumberProperty >;
+    temperature: Group< {
+        boilingTemp: Single< NumberProperty >;
+        liquidTemp: Single< NumberProperty >;
+        meltingTemp: Single< NumberProperty >;
+        transitionTemp: Single< NumberProperty >;
+        sublimationTemp: Single< NumberProperty >;
+        triplePoint: Single< NumberProperty >;
+    } >;
+    enthalpy: Group< {
+        atomizationEnthalpy: Single< NumberProperty >;
+        fusionEnthalpy: Single< NumberProperty >;
+        vaporisationEnthalpy: Single< NumberProperty >;
+    } >;
+    heat: Group< {
+        heatCapacity: Single< NumberProperty >;
+        thermalConductivity: Single< NumberProperty >;
+        thermalExpansion: Single< NumberProperty >;
+        workFunction: Single< NumberProperty >;
+    } >;
+    hardness: Group< {
+        brinellHardness: Single< NumberProperty >;
+        mohsHardness: Single< NumberProperty >;
+        vickersHardness: Single< NumberProperty >;
+    } >;
+    elasticity: Group< {
+        bulkModulus: Single< NumberProperty >;
+        poissonPoint: Single< NumberProperty >;
+        youngModulus: Single< NumberProperty >;
+        shearModulus: Single< NumberProperty >;
+    } >;
+    electricity: Group< {
+        electricalConductivity: Single< NumberProperty >;
+        electricalResistivity: Single< NumberProperty >;
+    } >;
+    magnetism: Group< {
+        magneticOrdering: Single< PrimitiveProperty >;
+        magneticSusceptibility: Single< NumberProperty >;
+        curiePoint: Single< NumberProperty >;
+        neelPoint: Single< NumberProperty >;
+    } >;
+    optics: Group< {
+        reflectance: Single< NumberProperty >;
+        refractiveIndex: Single< NumberProperty >;
+    } >;
+} >;
