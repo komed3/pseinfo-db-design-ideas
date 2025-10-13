@@ -31,6 +31,11 @@ export type DescriptiveCollection = MapPropertyDefinition< {
         country?: Distinct< string >;
         era?: Distinct< string >;
     } >;
+    properties?: Distinct< (
+        'antiquity' | 'artificial' | 'heavyMetal' | 'lightMetal' | 'mononuclide' | 'native' |
+        'natural' | 'noble' | 'platinumMetal' | 'radioactive' | 'rareEarths' | 'refractorMetal' |
+        'semiconductor' | 'stable' | 'synthetic' | 'vital'
+    )[] >;
     media?: Group< {
         images?: Distinct< {
             url: string;
@@ -39,6 +44,7 @@ export type DescriptiveCollection = MapPropertyDefinition< {
         }[] >;
         spectrum?: PrimitiveProperty;
     } >;
+    price?: Single< NumberProperty >;
     weblinks?: Distinct< {
         url: string;
         text?: string;
