@@ -24,14 +24,14 @@ export type FormCollection = Record< FormId, MapPropertyDefinition< {
         pearsonSymbol?: Distinct< string >;
         spaceGroup?: Distinct< string >;
         spaceGroupNumber?: Distinct< number >;
-        latticeConstant?: {
-            a?: number;
-            b?: number;
-            c?: number;
-            alpha?: number;
-            beta?: number;
-            gamma?: number;
-        };
+        latticeConstant?: Group< {
+            a?: Distinct< number >;
+            b?: Distinct< number >;
+            c?: Distinct< number >;
+            alpha?: Distinct< number >;
+            beta?: Distinct< number >;
+            gamma?: Distinct< number >;
+        } >;
     } >;
     note?: Distinct< string >;
 } > >;
