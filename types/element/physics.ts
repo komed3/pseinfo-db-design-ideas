@@ -1,5 +1,10 @@
+/**
+ * Element Physics Property Types
+ */
+
 import { Group, MapPropertyDefinition, NumberProperty, PrimitiveProperty, Single } from '../property';
 
+// Physics property group names
 export type PhysicsPropertyGroup =
     'density' | 'phase' | 'soundSpeed' | 'temperature' | 'enthalpy' | 'heat' |
     'hardness' | 'elasticity' | 'electricity' | 'magnetism' | 'optics';
@@ -12,6 +17,7 @@ export type PhysicsProperty =
     'electricalConductivity' | 'electricalResistivity' | 'magneticOrdering' | 'magneticSusceptibility' |
     'curiePoint' | 'neelPoint' | 'reflectance' | 'refractiveIndex';
 
+// Collection of physics properties
 export type PhysicsCollection = MapPropertyDefinition< {
     density: Single< NumberProperty >;
     phase: Single< PrimitiveProperty >;

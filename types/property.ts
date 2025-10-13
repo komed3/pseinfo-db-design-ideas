@@ -1,3 +1,7 @@
+/**
+ * Abstract Property Types
+ */
+
 import { OneOrMany } from './abstract';
 import { ArrayValue, CoupledNumberValue, CoupledValue, PrimitiveValue, RangeValue, SingleValue } from './value';
 
