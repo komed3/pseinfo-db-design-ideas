@@ -4,12 +4,6 @@
 
 import { Distinct, MapPropertyDefinition } from '../property';
 
-// Classification property names
-export type ClassificationProperty =
-    'symbol' | 'atomicNumber' | 'block' | 'column' | 'group' | 'period' | 'set' | 'phase' |
-    'naturalOccurrence' | 'goldschmidt' | 'superconductivity' | 'radioactive';
-
-// Collection of classification properties
 export type ClassificationCollection = MapPropertyDefinition< {
     symbol: Distinct< string >;
     atomicNumber: Distinct< number >;

@@ -4,16 +4,6 @@
 
 import { Distinct, Group, LangGroup, MapPropertyDefinition, NumberProperty, PrimitiveProperty, Single } from '../property';
 
-// Descriptive property names
-export type DescriptivePropertyGroup = 'registry' | 'abundance' | 'discovery' | 'media';
-
-export type DescriptiveProperty =
-    'names' | 'appearance' | 'cas' | 'inChI' | 'inChIkey' | 'cid' | 'echa' | 'eg' | 'wikidata' |
-    'rtecs' | 'universeAbundance' | 'sunAbundance' | 'meteoriteAbundance' | 'crustalAbundance' |
-    'seaAbundance' | 'streamAbundance' | 'humanAbundance' | 'year' | 'discoverer' | 'country' |
-    'era' | 'properties' | 'images' | 'spectrum' | 'price' | 'weblinks' | 'wiki';
-
-// Collection of descriptive properties
 export type DescriptiveCollection = MapPropertyDefinition< {
     names: LangGroup;
     appearance?: LangGroup;
