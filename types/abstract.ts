@@ -11,6 +11,9 @@ export type LiteralUnion< T extends U, U = string > = T | ( U & { _?: never } );
 // Get the union of all property values in T
 export type ValueOf< T > = T[ keyof T ];
 
+// Type that can be a single instance of T or an array of T
+export type OneOrMany< T > = T | T[];
+
 // Pick properties K from T, making them optional
 export type ExtractFrom< T, K extends keyof T > = Partial< Pick< T, K > >;
 

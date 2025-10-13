@@ -66,5 +66,15 @@ export type CoupledValue = BaseFields< 'coupled' > & {
     > >
 };
 
+// Coupled number values type (e.g., multiple related numeric properties)
+export type CoupledNumberValue = BaseFields< 'coupled' > & {
+    properties: RequireAtLeastOne< Record< PhysicalQuantity,
+        SingleValue | ArrayValue | RangeValue
+    > >
+};
+
+// Union type for all numeric value types
+export type NumberValue = SingleValue | ArrayValue | RangeValue | CoupledNumberValue;
+
 // Union type for all value types
-export type Value = PrimitiveValue | SingleValue | ArrayValue | RangeValue | CoupledValue;
+export type Value = NumberValue | PrimitiveValue | CoupledValue;
