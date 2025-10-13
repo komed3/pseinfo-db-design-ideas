@@ -2,7 +2,7 @@
  * Abstract Property Types
  */
 
-import { OneOrMany } from './abstract';
+import { OneOrMany, Primitive } from './abstract';
 import { ArrayValue, CoupledNumberValue, CoupledValue, PrimitiveValue, RangeValue, SingleValue } from './value';
 
 // Basic property types
@@ -21,17 +21,12 @@ export type PropertyGroup< Names extends string > = { [ K in Names ]?: Property 
 
 // Utility types
 export type Single< T extends Property > = T;
-export type Group< T extends Record< string, Property | undefined > > = T;
+export type Group< T extends Record< string, Property | Primitive | undefined > > = T;
+export type Distinct< T extends Primitive > = T;
 
 // Generic property collection mapper
-export type MapPropertyDefinition< T > = {
-    [ K in keyof T ]?: T[ K ] extends NumberProperty | PrimitiveProperty | Property
-        ? T[ K ]
-        : T[ K ] extends Record< string, any >
-        ? T[ K ] extends { [ key: string ]: NumberProperty | undefined }
-            ? NumberPropertyGroup< keyof T[ K ] & string >
-            : T[ K ] extends { [ key: string ]: Property | undefined }
-            ? PropertyGroup< keyof T[ K ] & string >
-            : never
-        : never;
-};
+export type MapPropertyDefinition<T> = { [ K in keyof T ]?: 
+    T[ K ] extends Single< infer P > ? P :
+    T[ K ] extends Group< infer G > ? { [ GK in keyof G ]?: G[ GK ] } :
+    T[ K ] extends NumberProperty | PrimitiveProperty | Property ? T[ K ] :
+    never };
