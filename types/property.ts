@@ -25,7 +25,14 @@ export type Group< T extends Record< string, unknown > > = T;
 export type Distinct< T > = T;
 
 // Helper types
-export type LangGroup = Group< Record< LiteralUnion< 'en' | 'la' >, Distinct< string > > >;
+export type LangGroup< L extends string = 'en' > = Group< Record< LiteralUnion< L >, Distinct< string > > >;
+export type Toxicity = Distinct< {
+    type: 'EC50' | 'LC50' | 'LD50' | 'TD50' | 'LOAEL' | 'LOEL' | 'NOAEL' | 'NOEL';
+    organism: string;
+    value: SingleValue | RangeValue;
+    application?: 'oral' | 'dermal' | 'inhalation' | 'intravenous' | 'intraperitoneal' | 'subcutaneous';
+    duration?: string;
+}[] >;
 
 // Generic property collection mapper
 export type MapPropertyDefinition< T > = { [ K in keyof T ]: 

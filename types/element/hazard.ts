@@ -2,7 +2,7 @@
  * Element Hazard Property Types
  */
 
-import { Distinct, MapPropertyDefinition } from '../property';
+import { Distinct, MapPropertyDefinition, Toxicity } from '../property';
 
 export type HazardCollection = MapPropertyDefinition< {
     statements?: {
@@ -28,4 +28,5 @@ export type HazardCollection = MapPropertyDefinition< {
             '9A' | 'HOT' | 'POL'
         )[] >;
     };
+    toxicity?: Toxicity;
 } >;
