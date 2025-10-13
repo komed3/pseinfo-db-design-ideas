@@ -1,3 +1,9 @@
+/**
+ * Chemical Element Collection
+ */
+
+import { PhysicsCollection } from './physics';
+
 // Chemical element symbols
 export type ElementSymbol =
     'h' | 'he' | 'li' | 'be' | 'b' | 'c' | 'n' | 'o' | 'f' | 'ne' | 'na' | 'mg' | 'al' | 'si' |
@@ -9,3 +15,8 @@ export type ElementSymbol =
     'tl' | 'pb' | 'bi' | 'po' | 'at' | 'rn' | 'fr' | 'ra' | 'ac' | 'th' | 'pa' | 'u' | 'np' |
     'pu' | 'am' | 'cm' | 'bk' | 'cf' | 'es' | 'fm' | 'md' | 'no' | 'lr' | 'rf' | 'db' | 'sg' |
     'bh' | 'hs' | 'mt' | 'ds' | 'rg' | 'cn' | 'nh' | 'fl' | 'mc' | 'lv' | 'ts' | 'og';
+
+// Collection of element properties
+export type ElementCollection = Record< ElementSymbol, {
+    physics: PhysicsCollection;
+} >;
