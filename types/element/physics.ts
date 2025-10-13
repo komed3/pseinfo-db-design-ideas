@@ -1,10 +1,10 @@
 import { NumberProperty, Property, PropertyGroup } from '../property';
 
-export type PhysicalPropertyGroup =
+export type PhysicsPropertyGroup =
     'density' | 'phase' | 'soundSpeed' | 'temperature' | 'enthalpy' | 'heat' |
     'hardness' | 'elasticity' | 'electricity' | 'magnetism' | 'optics';
 
-export type PhysicalPropertyName =
+export type PhysicsPropertyName =
     'density' | 'phase' | 'soundSpeed' | 'boilingTemp' | 'liquidTemp' | 'meltingTemp' | 'transitionTemp' |
     'sublimationTemp' | 'triplePoint' | 'atomizationEnthalpy' | 'fusionEnthalpy' | 'vaporisationEnthalpy' |
     'heatCapacity' | 'thermalConductivity' | 'thermalExpansion' | 'workFunction' | 'brinellHardness' |
@@ -12,7 +12,7 @@ export type PhysicalPropertyName =
     'electricalConductivity' | 'electricalResistivity' | 'magneticOrdering' | 'magneticSusceptibility' |
     'curiePoint' | 'neelPoint' | 'reflectance' | 'refractiveIndex';
 
-export interface PhysicalCollection {
+export interface PhysicsCollection {
     density?: NumberProperty;
     phase?: Property;
     soundSpeed?: NumberProperty;
