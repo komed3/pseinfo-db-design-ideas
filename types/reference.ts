@@ -177,8 +177,8 @@ export type Reference =
     MastersthesisReference | ThesisReference | MiscReference | PhdthesisReference |
     ProceedingsReference | TechreportReference | UnpublishedReference;
 
-// Collection of references indexed by a unique key
-export type ReferenceCollection = Record< string, Reference >;
-
 // Reference IDs used in other parts of the data model
-export type RefId = keyof ReferenceCollection;
+export type RefId = string;
+
+// Collection of references indexed by a unique key
+export type ReferenceCollection = Record< RefId, Reference >;

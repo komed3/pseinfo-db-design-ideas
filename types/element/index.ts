@@ -2,6 +2,7 @@
  * Chemical Element Collection
  */
 
+import { FormCollection } from '../form';
 import { AtomicsCollection } from './atomics';
 import { ChemistryCollection } from './chemistry';
 import { ClassificationCollection } from './classification';
@@ -27,6 +28,7 @@ export type ElementCollection = Record< ElementSymbol, {
     chemistry: ChemistryCollection;
     classification: ClassificationCollection;
     descriptive: DescriptiveCollection;
+    form: FormCollection;
     hazard: HazardCollection;
     physics: PhysicsCollection;
 } >;
