@@ -6,6 +6,7 @@ import { AtomicsCollection } from './atomics';
 import { ChemistryCollection } from './chemistry';
 import { ClassificationCollection } from './classification';
 import { DescriptiveCollection } from './descriptive';
+import { HazardCollection} from './hazard';
 import { PhysicsCollection } from './physics';
 
 // Chemical element symbols
@@ -26,5 +27,6 @@ export type ElementCollection = Record< ElementSymbol, {
     chemistry: ChemistryCollection;
     classification: ClassificationCollection;
     descriptive: DescriptiveCollection;
+    hazard: HazardCollection;
     physics: PhysicsCollection;
 } >;
