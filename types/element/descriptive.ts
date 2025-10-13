@@ -5,7 +5,7 @@
 import { Distinct, Group, LangGroup, MapPropertyDefinition, NumberProperty, PrimitiveProperty, Single } from '../property';
 
 export type DescriptiveCollection = MapPropertyDefinition< {
-    names: LangGroup;
+    names: LangGroup< 'en' | 'la' >;
     appearance?: LangGroup;
     registry: Group< {
         cas: Single< PrimitiveProperty >;
