@@ -3,6 +3,7 @@
  */
 
 import { AtomicsCollection } from './atomics';
+import { ChemistryCollection } from './chemistry';
 import { PhysicsCollection } from './physics';
 
 // Chemical element symbols
@@ -20,5 +21,6 @@ export type ElementSymbol =
 // Collection of element properties
 export type ElementCollection = Record< ElementSymbol, {
     atomics: AtomicsCollection;
+    chemistry: ChemistryCollection;
     physics: PhysicsCollection;
 } >;
