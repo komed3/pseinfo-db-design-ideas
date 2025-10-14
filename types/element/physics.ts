@@ -25,4 +25,29 @@ export type PhysicsCollection = Collection< {
         thermalExpansion?: Single< NumberProperty< 'length' | 'area' | 'volume' > >;
         workFunction?: Single< NumberProperty< 'energy' > >;
     } >;
+    hardness?: Group< {
+        brinellHardness?: Single< PrimitiveProperty< number > >;
+        mohsHardness?: Single< PrimitiveProperty< number > >;
+        vickersHardness?: Single< PrimitiveProperty< number > >;
+    } >;
+    elasticity?: Group< {
+        bulkModulus?: Single< NumberProperty< 'pressure' > >;
+        shearModulus?: Single< NumberProperty< 'pressure' > >;
+        youngModulus?: Single< NumberProperty< 'pressure' > >;
+        poissonPoint?: Single< PrimitiveProperty< number > >;
+    } >;
+    electricity?: Group< {
+        electricalConductivity?: Single< NumberProperty< 'conductance' > >;
+        electricalResistivity?: Single< NumberProperty< 'resistance' > >;
+    } >;
+    magnetism?: Group< {
+        magneticOrdering?: Single< PrimitiveProperty< string > >;
+        magneticSusceptibility?: Single< NumberProperty< 'molarMass' > >;
+        curiePoint?: Single< NumberProperty< 'temperature' > >;
+        neelPoint?: Single< NumberProperty< 'temperature' > >;
+    } >;
+    optics?: Group< {
+        reflectance?: Single< PrimitiveProperty< number > >;
+        refractiveIndex?: Single< PrimitiveProperty< number > >;
+    } >;
 } >;

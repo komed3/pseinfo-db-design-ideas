@@ -29,6 +29,7 @@ export type PhysicalQuantity =
     | 'inductance'
     | 'magneticFlux'
     | 'magneticFieldStrength'
+    | 'molarMass'
     | 'power'
     | 'pressure'
     | 'potential'
