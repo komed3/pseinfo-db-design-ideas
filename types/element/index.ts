@@ -1,3 +1,4 @@
+import { Collection } from '../abstract/collection';
 import { ChemistryCollection } from './chemistry';
 import { PhysicsCollection } from './physics';
 
@@ -14,7 +15,9 @@ export type ElementSymbol =
     'bh' | 'hs' | 'mt' | 'ds' | 'rg' | 'cn' | 'nh' | 'fl' | 'mc' | 'lv' | 'ts' | 'og';
 
 // Collection of element properties
-export type ElementCollection = Record< ElementSymbol, {
-    chemistry: ChemistryCollection;
-    physics: PhysicsCollection;
+export type ElementCollection = Collection< {
+    [ K in ElementSymbol ]: Collection< {
+        chemistry: ChemistryCollection;
+        physics: PhysicsCollection;
+    } >;
 } >;
