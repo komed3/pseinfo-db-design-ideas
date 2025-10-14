@@ -34,6 +34,7 @@ export type PhysicalQuantity =
     | 'molarMass'
     | 'power'
     | 'pressure'
+    | 'quantity'
     | 'radioactivity'
     | 'resistance'
     | 'thermalConductivity'
