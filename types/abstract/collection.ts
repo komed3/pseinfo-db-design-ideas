@@ -11,8 +11,8 @@ export type LangGroup< L extends string = 'en' > = Group< {
     [ K in LiteralUnion< L > ]: Distinct< string >;
 } >;
 
-export type FormGroup< T, L extends string = 'generic' > = Group< {
-    [ K in LiteralUnion< L > ]: T;
+export type FormGroup< T > = Group< {
+    [ K in LiteralUnion< 'elemental' > ]?: T;
 } >;
 
 // Generic collection mapper
