@@ -1,4 +1,7 @@
-import { PhysicalQuantity, UnitRef } from './unit';
+import { Uncertainty } from './uncertainty';
+import { RefId } from './reference';
+import { PhysicalQuantity, UnitId } from './unit';
+import { Primitive, RequireAtLeastOne } from './utils';
 
 // Type of value
 export type ValueType = 'primitive' | 'single' | 'array' | 'range' | 'coupled';
@@ -6,22 +9,11 @@ export type ValueType = 'primitive' | 'single' | 'array' | 'range' | 'coupled';
 // Value confidence / origin of the value
 export type ValueConfidence = 'measured' | 'calculated' | 'estimated' | 'theoretical' | 'experimental';
 
-// Value under specific conditions
-interface ConditionValue {
-    value: number;
-    unit_ref?: UnitRef;
-    uncertainty?: Uncertainty;
-    note?: string;
-}
-
-type Conditions = Partial< Record< PhysicalQuantity, ConditionValue[] > >;
-
 // Base fields for all value types
 interface BaseFields< T extends ValueType > {
     type: T;
     confidence?: ValueConfidence;
     uncertainty?: Uncertainty;
-    conditions?: Conditions;
     references?: RefId[];
     note?: string;
 }
@@ -35,7 +27,14 @@ interface ValueFields< Q extends PhysicalQuantity = PhysicalQuantity > {
         uncertainty?: Uncertainty;
         inclusive?: boolean;
     } > >;
-    unit_ref?: UnitRef< Q >;
+    unit_ref?: UnitId< Q >;
 }
 
+// Specific value type definitions
+export type PrimitiveValue< T extends Primitive = Primitive > = BaseFields< 'primitive' > & { value: T };
 
+// Union type for all uncertainty types
+export type Value<
+    Q extends PhysicalQuantity = PhysicalQuantity,
+    T extends Primitive = Primitive
+> = PrimitiveValue< T >;

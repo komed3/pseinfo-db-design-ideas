@@ -42,6 +42,6 @@ interface Quantity< Q extends PhysicalQuantity > {
 export type QuantityCollection = { [ Q in PhysicalQuantity ]: Quantity< Q > };
 
 // Unit reference used in other parts of the data model
-export type UnitRef< Q extends PhysicalQuantity = PhysicalQuantity > = [
+export type UnitId< Q extends PhysicalQuantity = PhysicalQuantity > = [
     Q, keyof QuantityCollection[ Q ][ 'units' ]
 ];
