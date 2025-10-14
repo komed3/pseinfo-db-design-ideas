@@ -18,7 +18,7 @@ export type FormCollection = Record< string, Collection< {
     formula: Distinct< string >;
     names?: LangGroup;
     phase?: Distinct< 'solid' | 'gas' | 'liquid' >;
-    naturalOccurrence: Distinct< 'primordial' | 'decayProduct' | 'synthetic' >;
+    naturalOccurrence?: Distinct< 'primordial' | 'decayProduct' | 'synthetic' >;
     note?: Distinct< string >;
 } > >;
 
