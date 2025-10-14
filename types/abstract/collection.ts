@@ -1,9 +1,15 @@
 import { Property } from './property';
+import { LiteralUnion } from './utils';
 
 // Utility types
 export type Single< T extends Property > = T;
 export type Distinct< T = any > = T;
 export type Group< T extends Record< string, Single< Property > | Distinct< any > > > = T;
+
+// Helper types
+export type LangGroup< L extends string = 'en' > = Group< {
+    [ K in LiteralUnion< L > ]: Distinct< string >;
+} >;
 
 // Generic collection mapper
 export type Collection< T > = { [ K in keyof T ]:

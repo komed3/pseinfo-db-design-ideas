@@ -1,6 +1,9 @@
 // Primitive types in TypeScript
 export type Primitive = string | number | boolean | symbol | null | undefined;
 
+// Create a type that is either T or a literal union of U
+export type LiteralUnion< T extends U, U = string > = T | ( U & { _?: never } );
+
 // Type that can be a single instance of T or an array of T
 export type OneOrMany< T > = T | T[];
 
