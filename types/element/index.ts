@@ -22,12 +22,12 @@ export type ElementSymbol =
 // Collection of element properties
 export type ElementCollection = Collection< {
     [ K in ElementSymbol ]: Collection< {
-        form?: FormCollection;
         classification: ClassificationCollection;
         descriptive: DescriptiveCollection;
         atomics: AtomicsCollection;
         physics: PhysicsCollection;
         chemistry: ChemistryCollection;
-        hazard: HazardCollection;
+        form?: FormCollection;
+        hazard?: HazardCollection;
     } >;
 } >;
