@@ -3,8 +3,8 @@ import { LiteralUnion } from './utils';
 
 // Utility types
 export type Single< T extends Property > = T;
-export type Distinct< T = any > = T;
-export type Group< T extends Record< string, Single< Property > | Distinct< any > > > = T;
+export type Distinct< T = unknown > = T;
+export type Group< T extends Record< string, Single< Property > | Distinct< unknown > > > = T;
 
 // Helper types
 export type LangGroup< L extends string = 'en' > = Group< {
