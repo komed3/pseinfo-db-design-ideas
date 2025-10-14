@@ -1,4 +1,5 @@
 import { Collection, Distinct, LangGroup } from './collection';
+import { RegistryGroup } from './helper';
 
 // Predefined form types
 export type FormType =
@@ -16,6 +17,7 @@ export type FormType =
 export type FormCollection = Record< string, Collection< {
     type: Distinct< FormType >;
     formula: Distinct< string >;
+    registry: RegistryGroup;
     names?: LangGroup;
     phase?: Distinct< 'solid' | 'gas' | 'liquid' >;
     naturalOccurrence?: Distinct< 'primordial' | 'decayProduct' | 'synthetic' >;
