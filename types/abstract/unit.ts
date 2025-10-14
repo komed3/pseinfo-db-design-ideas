@@ -15,7 +15,33 @@ export type PhysicalQuantity = SIDimension |
 // [ time, length, mass, electricCurrent, temperature, amountOfSubstance, luminousIntensity ]
 type DimensionVector = [ number, number, number, number, number, number, number ];
 
+// Interface describing a physical unit
+interface Unit< Q extends PhysicalQuantity > {
+    symbol: string;
+    quantity: Q;
+    name?: string;
+    isBase?: boolean;
+    conversion?: {
+        factor: number;
+        offset?: number;
+    };
+}
 
+// Interface describing a physical quantity and its units
+interface Quantity< Q extends PhysicalQuantity > {
+    dimension: {
+        symbol: string;
+        name: string;
+        vector: DimensionVector;
+    };
+    baseUnit: string;
+    units: Record< string, Unit< Q > >;
+}
 
+// Collection of physical quantities
+export type QuantityCollection = { [ Q in PhysicalQuantity ]: Quantity< Q > };
 
-export type UnitRef< Q extends PhysicalQuantity > = [ Q, string ];
+// Unit reference used in other parts of the data model
+export type UnitRef< Q extends PhysicalQuantity = PhysicalQuantity > = [
+    Q, keyof QuantityCollection[ Q ][ 'units' ]
+];

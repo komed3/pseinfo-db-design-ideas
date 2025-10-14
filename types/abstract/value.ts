@@ -27,7 +27,7 @@ interface BaseFields< T extends ValueType > {
 }
 
 // Fields specific to value types
-interface ValueFields< Q extends PhysicalQuantity | undefined = undefined > {
+interface ValueFields< Q extends PhysicalQuantity = PhysicalQuantity > {
     value?: number;
     values?: number[];
     range?: RequireAtLeastOne< Record< 'lower' | 'upper', {
