@@ -3,9 +3,9 @@ import { RegistryGroup } from '../abstract/helper';
 import { NumberProperty, PrimitiveProperty } from '../abstract/property';
 
 export type DescriptiveCollection = Collection< {
+    registry: RegistryGroup;
     names: LangGroup< 'en' | 'la' >;
     appearance?: LangGroup;
-    registry: RegistryGroup;
     abundance?: Group< {
         universeAbundance?: Single< NumberProperty< 'quantity' > >;
         sunAbundance?: Single< NumberProperty< 'quantity' > >;
