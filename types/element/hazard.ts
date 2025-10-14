@@ -8,10 +8,10 @@ export type HazardCollection = Collection< FormGroup< {
     } >;
     signal?: Distinct< 'danger' | 'warning' >;
     nfpa?: Distinct< {
-        flammability: number;
-        health: number;
-        instability: number;
-        special: string;
+        flammability: 0 | 1 | 2 | 3 | 4;
+        health: 0 | 1 | 2 | 3 | 4;
+        instability: 0 | 1 | 2 | 3 | 4;
+        special?: 'W' | 'OX' | 'SA' | 'ACID' | 'ALK' | 'COR' | 'BIO' | 'RAC';
     } >;
     pictograms?: Distinct< (
         'explosive' | 'flammable' | 'oxidizing' | 'compressedGas' | 'corrosive' | 'toxic' |
