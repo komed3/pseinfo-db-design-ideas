@@ -4,6 +4,7 @@ import { Collection, Distinct, LangGroup } from './collection';
 export type FormType =
     | 'allotrope'
     | 'phase'
+    | 'molecular'
     | 'polymorph'
     | 'morphology'
     | 'crystalSystem'
