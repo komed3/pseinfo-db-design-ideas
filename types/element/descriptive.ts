@@ -1,6 +1,6 @@
 import { Collection, Distinct, Group, LangGroup, Single } from '../abstract/collection';
 import { RegistryGroup } from '../abstract/helper';
-import { NumberProperty } from '../abstract/property';
+import { NumberProperty, PrimitiveProperty } from '../abstract/property';
 
 export type DescriptiveCollection = Collection< {
     names: LangGroup< 'en' | 'la' >;
@@ -20,4 +20,24 @@ export type DescriptiveCollection = Collection< {
         discoverer?: Distinct< string >;
         country?: Distinct< string >;
     } >;
+    properties?: Distinct< (
+        'antiquity' | 'artificial' | 'heavyMetal' | 'lightMetal' | 'mononuclide' | 'native' |
+        'natural' | 'noble' | 'platinumMetal' | 'radioactive' | 'rareEarths' | 'refractorMetal' |
+        'semiconductor' | 'stable' | 'synthetic' | 'vital'
+    )[] >;
+    media?: Group< {
+        images?: Distinct< {
+            url: string;
+            caption: string;
+            text?: string;
+        }[] >;
+        spectrum?: PrimitiveProperty< string >;
+    } >;
+    weblinks?: Distinct< {
+        url: string;
+        text?: string;
+        archiveUrl?: string;
+        accessed?: string;
+    }[] >;
+    wiki?: LangGroup;
 } >;
