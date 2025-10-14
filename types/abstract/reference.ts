@@ -1,7 +1,3 @@
-/**
- * Reference Types (based on BibTeX)
- */
-
 import { ExtractFrom, RequireAtLeastOne, RequireExactlyOne, StrictSubset } from './utils';
 
 // Reference Types based on BibTeX

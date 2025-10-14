@@ -1,6 +1,9 @@
 // Primitive types in TypeScript
 export type Primitive = string | number | boolean | symbol | null | undefined;
 
+// Type that can be a single instance of T or an array of T
+export type OneOrMany< T > = T | T[];
+
 // Pick properties K from T, making them optional
 export type ExtractFrom< T, K extends keyof T > = Partial< Pick< T, K > >;
 

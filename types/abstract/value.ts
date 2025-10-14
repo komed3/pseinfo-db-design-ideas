@@ -81,7 +81,7 @@ export type CoupledValue< T extends Primitive = Primitive > =
         } >;
     };
 
-// Union type for all uncertainty types
+// Union value types
 export type NumberValue< Q extends PhysicalQuantity = PhysicalQuantity > =
     | SingleValue< Q >
     | ArrayValue< Q >
