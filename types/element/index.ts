@@ -27,7 +27,7 @@ export type ElementCollection = Collection< {
         atomics: AtomicsCollection;
         physics: PhysicsCollection;
         chemistry: ChemistryCollection;
-        form?: FormCollection;
+        forms?: FormCollection;
         hazard?: HazardCollection;
     } >;
 } >;
