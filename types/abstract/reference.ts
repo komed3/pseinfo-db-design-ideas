@@ -6,9 +6,21 @@ import { ExtractFrom, RequireAtLeastOne, RequireExactlyOne, StrictSubset } from 
 
 // Reference Types based on BibTeX
 export type ReferenceType =
-    'article' | 'book' | 'booklet' | 'conference' | 'inbook' | 'incollection' |
-    'inproceedings' | 'manual' | 'mastersthesis' | 'thesis' | 'misc' | 'phdthesis' |
-    'proceedings' | 'techreport' | 'unpublished';
+    | 'article'
+    | 'book'
+    | 'booklet'
+    | 'conference'
+    | 'inbook'
+    | 'incollection'
+    | 'inproceedings'
+    | 'manual'
+    | 'mastersthesis'
+    | 'thesis'
+    | 'misc'
+    | 'phdthesis'
+    | 'proceedings'
+    | 'techreport'
+    | 'unpublished';
 
 // Base fields common to all reference types
 interface BaseFields< T extends ReferenceType > {
@@ -175,10 +187,21 @@ export type UnpublishedReference =
 
 // Union type of all reference types
 export type Reference =
-    ArticleReference | BookReference | BookletReference | ConferenceReference |
-    InbookReference | IncollectionReference | InproceedingsReference | ManualReference |
-    MastersthesisReference | ThesisReference | MiscReference | PhdthesisReference |
-    ProceedingsReference | TechreportReference | UnpublishedReference;
+    | ArticleReference
+    | BookReference
+    | BookletReference
+    | ConferenceReference
+    | InbookReference
+    | IncollectionReference
+    | InproceedingsReference
+    | ManualReference
+    | MastersthesisReference
+    | ThesisReference
+    | MiscReference
+    | PhdthesisReference
+    | ProceedingsReference
+    | TechreportReference
+    | UnpublishedReference;
 
 // Collection of references indexed by a unique key
 export type ReferenceCollection = Record< string, Reference >;

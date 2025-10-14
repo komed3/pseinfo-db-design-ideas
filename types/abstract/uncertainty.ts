@@ -1,7 +1,10 @@
 import { RequireFrom } from './utils';
 
 // Types of uncertainty
-export type UncertaintyType = 'absolute' | 'relative' | 'asymmetrical';
+export type UncertaintyType =
+    | 'absolute'
+    | 'relative'
+    | 'asymmetrical';
 
 // Base fields for all uncertainty types
 interface BaseFields< T extends UncertaintyType > {
@@ -19,9 +22,20 @@ interface UncertaintyFields {
 }
 
 // Specific uncertainty type definitions
-export type AbsoluteUncertainty = BaseFields< 'absolute' > & RequireFrom< UncertaintyFields, 'deviation' >;
-export type RelativeUncertainty = BaseFields< 'relative' > & RequireFrom< UncertaintyFields, 'relative' >;
-export type AsymmetricalUncertainty = BaseFields< 'asymmetrical' > & RequireFrom< UncertaintyFields, 'plus' | 'minus' >;
+export type AbsoluteUncertainty =
+    BaseFields< 'absolute' > &
+    RequireFrom< UncertaintyFields, 'deviation' >;
+
+export type RelativeUncertainty =
+    BaseFields< 'relative' > &
+    RequireFrom< UncertaintyFields, 'relative' >;
+
+export type AsymmetricalUncertainty =
+    BaseFields< 'asymmetrical' > &
+    RequireFrom< UncertaintyFields, 'plus' | 'minus' >;
 
 // Union type for all uncertainty types
-export type Uncertainty = AbsoluteUncertainty | RelativeUncertainty | AsymmetricalUncertainty;
+export type Uncertainty =
+    | AbsoluteUncertainty
+    | RelativeUncertainty
+    | AsymmetricalUncertainty;
