@@ -1,6 +1,9 @@
 import { Collection } from '../abstract/collection';
 import { AtomicsCollection } from './atomics';
 import { ChemistryCollection } from './chemistry';
+import { ClassificationCollection } from './classification';
+import { DescriptiveCollection } from './descriptive';
+import { HazardCollection } from './hazard';
 import { PhysicsCollection } from './physics';
 
 // Chemical element symbols
@@ -20,6 +23,9 @@ export type ElementCollection = Collection< {
     [ K in ElementSymbol ]: Collection< {
         atomics: AtomicsCollection;
         chemistry: ChemistryCollection;
+        classification: ClassificationCollection;
+        descriptive: DescriptiveCollection;
+        hazard: HazardCollection;
         physics: PhysicsCollection;
     } >;
 } >;
