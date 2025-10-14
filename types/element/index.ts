@@ -1,3 +1,6 @@
+import { ChemistryCollection } from './chemistry';
+import { PhysicsCollection } from './physics';
+
 // Chemical element symbols
 export type ElementSymbol =
     'h' | 'he' | 'li' | 'be' | 'b' | 'c' | 'n' | 'o' | 'f' | 'ne' | 'na' | 'mg' | 'al' | 'si' |
@@ -11,4 +14,7 @@ export type ElementSymbol =
     'bh' | 'hs' | 'mt' | 'ds' | 'rg' | 'cn' | 'nh' | 'fl' | 'mc' | 'lv' | 'ts' | 'og';
 
 // Collection of element properties
-export type ElementCollection = Record< ElementSymbol, {} >;
+export type ElementCollection = Record< ElementSymbol, {
+    chemistry: ChemistryCollection;
+    physics: PhysicsCollection;
+} >;
