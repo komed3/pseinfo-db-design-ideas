@@ -1,4 +1,5 @@
 import { Collection } from '../abstract/collection';
+import { FormCollection } from '../abstract/form';
 import { AtomicsCollection } from './atomics';
 import { ChemistryCollection } from './chemistry';
 import { ClassificationCollection } from './classification';
@@ -21,11 +22,12 @@ export type ElementSymbol =
 // Collection of element properties
 export type ElementCollection = Collection< {
     [ K in ElementSymbol ]: Collection< {
-        atomics: AtomicsCollection;
-        chemistry: ChemistryCollection;
+        form?: FormCollection;
         classification: ClassificationCollection;
         descriptive: DescriptiveCollection;
-        hazard: HazardCollection;
+        atomics: AtomicsCollection;
         physics: PhysicsCollection;
+        chemistry: ChemistryCollection;
+        hazard: HazardCollection;
     } >;
 } >;
