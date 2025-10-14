@@ -13,4 +13,9 @@ export type ClassificationCollection = Collection< {
         'nonMetal' | 'nobleGas' | 'alkaliMetal' | 'alkalineEarthMetal' | 'metalloid' |
         'halogen' | 'metal' | 'transitionMetal' | 'lanthanoide' | 'actinoide'
     >;
+    phase?: Distinct< 'solid' | 'gas' | 'liquid' >;
+    naturalOccurrence: Distinct< 'primordial' | 'decayProduct' | 'synthetic' >;
+    goldschmidt: Distinct< 'atmophile' | 'chalcophile' | 'lithophile' | 'siderophile' | 'synthetic' >;
+    superconductivity?: Distinct< 'none' | 'normal' | 'special' >;
+    radioactive: Distinct< boolean >;
 } >;
