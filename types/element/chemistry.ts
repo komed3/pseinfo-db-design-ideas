@@ -1,1 +1,3 @@
-export type ChemistryCollection = {};
+import { Collection } from '../abstract/collection';
+
+export type ChemistryCollection = Collection< {} >;

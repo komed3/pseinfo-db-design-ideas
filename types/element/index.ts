@@ -1,4 +1,5 @@
 import { Collection } from '../abstract/collection';
+import { AtomicsCollection } from './atomics';
 import { ChemistryCollection } from './chemistry';
 import { PhysicsCollection } from './physics';
 
@@ -17,6 +18,7 @@ export type ElementSymbol =
 // Collection of element properties
 export type ElementCollection = Collection< {
     [ K in ElementSymbol ]: Collection< {
+        atomics: AtomicsCollection;
         chemistry: ChemistryCollection;
         physics: PhysicsCollection;
     } >;
