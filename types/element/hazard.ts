@@ -1,4 +1,5 @@
 import { Collection, Distinct, FormGroup, Group } from '../abstract/collection';
+import { RangeValue, SingleValue } from '../abstract/value';
 
 export type HazardCollection = Collection< FormGroup< {
     statements?: Group< {
@@ -24,4 +25,11 @@ export type HazardCollection = Collection< FormGroup< {
             '9A' | 'HOT' | 'POL'
         )[] >;
     } >;
+    toxicity?: Distinct< {
+        type: 'EC50' | 'LC50' | 'LD50' | 'TD50' | 'LOAEL' | 'LOEL' | 'NOAEL' | 'NOEL';
+        organism: string;
+        value: SingleValue< 'massFraction' > | RangeValue< 'massFraction' >;
+        application?: 'oral' | 'dermal' | 'inhalation' | 'intravenous' | 'intraperitoneal' | 'subcutaneous';
+        duration?: string;
+    }[] >;
 } > >;
