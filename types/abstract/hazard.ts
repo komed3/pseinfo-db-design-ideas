@@ -24,3 +24,8 @@ export const ADRClass = [
 ] as const;
 
 export type ADRClass = ( typeof ADRClass )[ number ];
+
+// Hazard statements
+export type HStatement = `H${ '2' | '3' | '4' | '5' }${ string }`;
+export type PStatement = `P${ '1' | '2' | '3' | '4' | '5' }${ string }`;
+export type EUHStatement = `EUH${ '0' | '2' | '3' | '4' }${ string }`;
