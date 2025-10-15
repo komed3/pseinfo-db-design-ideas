@@ -26,7 +26,7 @@ type SingleElement = Collection< {
     classification: ClassificationCollection;
     descriptive: DescriptiveCollection;
     atomics?: AtomicsCollection;
-    physics: PhysicsCollection;
+    physics?: PhysicsCollection;
     chemistry?: ChemistryCollection;
 } >;
 

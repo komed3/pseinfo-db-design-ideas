@@ -1,4 +1,5 @@
 import { Distinct, Group } from './collection';
+import { RangeValue, SingleValue } from './value';
 
 // Phase of matter
 export const Phase = [ 'solid', 'gaseous', 'liquid' ] as const;
@@ -53,7 +54,7 @@ export const CrystalStructure = [
 export type CrystalStructure = ( typeof CrystalStructure )[ number ];
 
 // Registry identifiers for substances
-export type RegistryGroup = Group< {
+export type Registry = Group< {
     cas: Distinct< string >;
     inChI: Distinct< string >;
     inChIkey: Distinct< string >;
@@ -65,7 +66,7 @@ export type RegistryGroup = Group< {
 } >;
 
 // Crystal structure information
-export type CrystalGroup = Group< {
+export type CrystalSystem = Group< {
     crystalStructure?: Distinct< CrystalStructure >;
     pearsonSymbol?: Distinct< string >;
     spaceGroup?: Distinct< string >;
@@ -79,3 +80,12 @@ export type CrystalGroup = Group< {
         gamma?: Distinct< number >;
     } >;
 } >;
+
+// Toxicity information
+export type Toxicity = Distinct< {
+    type: 'EC50' | 'LC50' | 'LD50' | 'TD50' | 'LOAEL' | 'LOEL' | 'NOAEL' | 'NOEL';
+    organism: string;
+    value: SingleValue< 'massFraction' > | RangeValue< 'massFraction' >;
+    application?: 'oral' | 'dermal' | 'inhalation' | 'intravenous' | 'intraperitoneal' | 'subcutaneous';
+    duration?: string;
+}[] >;

@@ -1,5 +1,5 @@
 import { Collection, Group, Single } from '../abstract/collection';
-import { CrystalGroup } from '../abstract/helper';
+import { CrystalSystem } from '../abstract/helper';
 import { NumberProperty, PrimitiveProperty } from '../abstract/property';
 
 export type ChemistryCollection = Collection< {
@@ -18,5 +18,5 @@ export type ChemistryCollection = Collection< {
     oxidationState?: Single< PrimitiveProperty< string > >;
     oxideCharacter?: Single< PrimitiveProperty< string > >;
     standardPotential?: Single< NumberProperty< 'electricPotential' > >;
-    crystalSystem?: CrystalGroup;
+    crystalSystem?: CrystalSystem;
 } >;
