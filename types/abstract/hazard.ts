@@ -30,6 +30,10 @@ export const ADRClass = [
 
 export type ADRClass = ( typeof ADRClass )[ number ];
 
+// WHMIS classes
+export const WHMISClass = [ 'A', 'B', 'C', 'D-1', 'D-2', 'D-3', 'E', 'F' ] as const;
+export type WHMISClass = ( typeof WHMISClass )[ number ];
+
 // NFPA 704 standard
 export type NFPA = {
     flammability: 0 | 1 | 2 | 3 | 4;
@@ -50,6 +54,7 @@ export type Hazard = Group< {
     classes?: Group< {
         ghs?: Distinct< GHSClass[] >;
         adr?: Distinct< ADRClass[] >;
+        whmis?: Distinct< WHMISClass[] >;
     } >;
     nfpa?: NFPA;
     note?: string;
