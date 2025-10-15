@@ -54,6 +54,4 @@ export type QuantityCollection = {
 };
 
 // Unit reference used in other parts of the data model
-export type UnitId< Q extends PhysicalQuantity = PhysicalQuantity > = [
-    Q, keyof QuantityCollection[ Q ][ 'units' ]
-];
+export type UnitId< Q extends PhysicalQuantity = PhysicalQuantity > = [ Q, string ];
