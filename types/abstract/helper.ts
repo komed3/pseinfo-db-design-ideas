@@ -6,6 +6,10 @@ export type Phase = ( typeof Phase )[ number ];
 export const ElementBlock = [ 's', 'p', 'd', 'f' ] as const;
 export type ElementBlock = ( typeof ElementBlock )[ number ];
 
+// Element blocks
+export const ShellModel = [ 'k', 'l', 'm', 'n', 'o', 'p', 'q' ] as const;
+export type ShellModel = ( typeof ShellModel )[ number ];
+
 // Element sets/groups
 export const ElementSet = [
     'nonMetal', 'nobleGas', 'alkaliMetal', 'alkalineEarthMetal', 'metalloid', 'halogen',
