@@ -1,4 +1,9 @@
-import {} from './collection';
+import { Distinct, Group } from './collection';
+
+// Hazard statements
+export type HStatement = `H${ '2' | '3' | '4' | '5' }${ string }`;
+export type PStatement = `P${ '1' | '2' | '3' | '4' | '5' }${ string }`;
+export type EUHStatement = `EUH${ '0' | '2' | '3' | '4' }${ string }`;
 
 // Hazard signal words
 export const SignalWord = [ 'danger', 'warning' ] as const;
@@ -25,11 +30,6 @@ export const ADRClass = [
 
 export type ADRClass = ( typeof ADRClass )[ number ];
 
-// Hazard statements
-export type HStatement = `H${ '2' | '3' | '4' | '5' }${ string }`;
-export type PStatement = `P${ '1' | '2' | '3' | '4' | '5' }${ string }`;
-export type EUHStatement = `EUH${ '0' | '2' | '3' | '4' }${ string }`;
-
 // NFPA 704 standard
 export type NFPA = {
     flammability: 0 | 1 | 2 | 3 | 4;
@@ -37,3 +37,20 @@ export type NFPA = {
     instability: 0 | 1 | 2 | 3 | 4;
     special?: 'W' | 'OX' | 'SA' | 'ACID' | 'ALK' | 'COR' | 'BIO' | 'RAC';
 };
+
+// Hazardous information
+export type Hazard = Group< {
+    statements?: Group< {
+        hazard?: Distinct< HStatement[] >;
+        precautionary?: Distinct< PStatement[] >;
+        eu?: Distinct< EUHStatement[] >;
+    } >;
+    signalWord?: Distinct< SignalWord >;
+    pictograms?: Distinct< GHSPictogram[] >;
+    classes?: Group< {
+        ghs?: Distinct< GHSClass[] >;
+        adr?: Distinct< ADRClass[] >;
+    } >;
+    nfpa?: NFPA;
+    note?: string;
+} >;
