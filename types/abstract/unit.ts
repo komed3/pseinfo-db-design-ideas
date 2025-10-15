@@ -41,6 +41,7 @@ interface Quantity< Q extends PhysicalQuantity > {
     dimension: {
         symbol: string;
         name: string;
+        si: Q extends SIDimension ? true : false;
         vector: DimensionVector;
     };
     baseUnit: string;
