@@ -2,13 +2,26 @@
 export const Phase = [ 'solid', 'gaseous', 'liquid' ] as const;
 export type Phase = ( typeof Phase )[ number ];
 
-// Common element sets/groups
+// Element blocks
+export const ElementBlock = [ 's', 'p', 'd', 'f' ] as const;
+export type ElementBlock = ( typeof ElementBlock )[ number ];
+
+// Element sets/groups
 export const ElementSet = [
     'nonMetal', 'nobleGas', 'alkaliMetal', 'alkalineEarthMetal', 'metalloid', 'halogen',
     'metal', 'transitionMetal', 'lanthanoide', 'actinoide'
 ] as const;
 
 export type ElementSet = ( typeof ElementSet )[ number ];
+
+// Element properties
+export const ElementProperty = [
+    'antiquity', 'artificial', 'heavyMetal', 'lightMetal', 'mononuclide', 'native',
+    'natural', 'noble', 'platinumMetal', 'radioactive', 'rareEarths', 'refractorMetal',
+    'semiconductor', 'stable', 'synthetic', 'vital'
+] as const;
+
+export type ElementProperty = ( typeof ElementProperty )[ number ];
 
 // Natural occurrence types
 export const NaturalOccurrence = [ 'primordial', 'decayProduct', 'synthetic' ] as const;
