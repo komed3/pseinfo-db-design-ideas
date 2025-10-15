@@ -21,6 +21,10 @@ export type GHSPictogram = ( typeof GHSPictogram )[ number ];
 export const GHSClass = [ '01', '02', '03', '04', '05', '06', '07', '08', '09' ] as const;
 export type GHSClass = ( typeof GHSClass )[ number ];
 
+// WHMIS classes
+export const WHMISClass = [ 'A', 'B', 'C', 'D-1', 'D-2', 'D-3', 'E', 'F' ] as const;
+export type WHMISClass = ( typeof WHMISClass )[ number ];
+
 // ADR hazard classes
 export const ADRClass = [
     '1', '1.4', '1.5D', '1.6N', '2.1', '2.2', '2.3', '3', '4.1', '4.2',
@@ -30,9 +34,13 @@ export const ADRClass = [
 
 export type ADRClass = ( typeof ADRClass )[ number ];
 
-// WHMIS classes
-export const WHMISClass = [ 'A', 'B', 'C', 'D-1', 'D-2', 'D-3', 'E', 'F' ] as const;
-export type WHMISClass = ( typeof WHMISClass )[ number ];
+// DOT hazard classes
+export const DOTClass = [
+    '1.1', '1.2', '1.3', '1.4', '1.5', '1.6', '2.1', '2.2', '2.3', '3',
+    '4.1', '4.2', '4.3', '5.1', '5.2', '6.1', '6.2', '7', '8', '9'
+] as const;
+
+export type DOTClass = ( typeof DOTClass )[ number ];
 
 // NFPA 704 standard
 export type NFPA = {
@@ -53,8 +61,9 @@ export type Hazard = Group< {
     pictograms?: Distinct< GHSPictogram[] >;
     classes?: Group< {
         ghs?: Distinct< GHSClass[] >;
-        adr?: Distinct< ADRClass[] >;
         whmis?: Distinct< WHMISClass[] >;
+        adr?: Distinct< ADRClass[] >;
+        dot?: Distinct< DOTClass[] >;
     } >;
     nfpa?: NFPA;
     note?: string;
