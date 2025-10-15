@@ -1,0 +1,44 @@
+import { Collection, Distinct, Group, LangGroup, Single } from '../abstract/collection';
+import { ElementProperty, RegistryGroup } from '../abstract/helper';
+import { NumberProperty, PrimitiveProperty } from '../abstract/property';
+
+// Collection of descriptive properties
+export type DescriptiveCollection = Collection< {
+    registry: RegistryGroup;
+    names: LangGroup< 'en' | 'la' >;
+    appearance?: LangGroup;
+    abundance?: Group< {
+        universeAbundance?: Single< NumberProperty< 'quantity' > >;
+        sunAbundance?: Single< NumberProperty< 'quantity' > >;
+        meteoriteAbundance?: Single< NumberProperty< 'quantity' > >;
+        crustalAbundance?: Single< NumberProperty< 'quantity' > >;
+        seaAbundance?: Single< NumberProperty< 'quantity' > >;
+        streamAbundance?: Single< NumberProperty< 'quantity' > >;
+        humanAbundance?: Single< NumberProperty< 'quantity' > >;
+    } >;
+    discovery?: Group< {
+        year?: Distinct< number >;
+        discoverer?: Distinct< string >;
+        country?: Distinct< string >;
+        institute?: Distinct< string >;
+    } >;
+    properties?: Distinct< ElementProperty[] >;
+    media?: Group< {
+        images?: Distinct< {
+            url: string;
+            caption: string;
+            text?: string;
+        }[] >;
+        spectrum?: PrimitiveProperty< string >;
+    } >;
+    weblinks?: Distinct< {
+        url: string;
+        text?: string;
+        archiveUrl?: string;
+        accessed?: string;
+    }[] >;
+    wiki?: LangGroup;
+} >;
+
+// Keys of the descriptive collection
+export type DescriptiveKeys = keyof DescriptiveCollection;

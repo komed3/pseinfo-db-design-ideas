@@ -1,3 +1,5 @@
+import { Distinct, Group } from './collection';
+
 // Phase of matter
 export const Phase = [ 'solid', 'gaseous', 'liquid' ] as const;
 export type Phase = ( typeof Phase )[ number ];
@@ -38,3 +40,15 @@ export type Goldschmidt = ( typeof Goldschmidt )[ number ];
 // Superconductivity types
 export const Superconductivity = [ 'none', 'normal', 'special' ] as const;
 export type Superconductivity = ( typeof Superconductivity )[ number ];
+
+// Registry identifiers for substances
+export type RegistryGroup = Group< {
+    cas: Distinct< string >;
+    inChI: Distinct< string >;
+    inChIkey: Distinct< string >;
+    cid: Distinct< string >;
+    echa?: Distinct< string >;
+    eg?: Distinct< string >;
+    wikidata?: Distinct< string >;
+    rtecs?: Distinct< string >;
+} >;

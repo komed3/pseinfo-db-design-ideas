@@ -2,6 +2,7 @@ import { Collection } from '../abstract/collection';
 import { FormCollection } from '../abstract/form';
 import { DeepPartial } from '../abstract/utils';
 import { ClassificationCollection } from './classification';
+import { DescriptiveCollection } from './descriptive';
 
 // List of all element symbols from the periodic table
 export const ElementSymbol = [
@@ -20,6 +21,7 @@ export type ElementSymbol = ( typeof ElementSymbol )[ number ];
 // Type for a single element entry (all properties)
 type SingleElement = Collection< {
     classification: ClassificationCollection;
+    descriptive: DescriptiveCollection;
 } >;
 
 // Collection type for all elements, indexed by their symbol
