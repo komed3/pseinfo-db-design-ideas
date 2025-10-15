@@ -25,7 +25,7 @@ export type PhysicalQuantity = ( typeof PhysicalQuantity )[ number ];
 type DimensionVector = [ number, number, number, number, number, number, number ];
 
 // Interface describing a physical unit
-interface Unit< Q extends PhysicalQuantity > {
+type Unit< Q extends PhysicalQuantity > = {
     symbol: string;
     quantity: Q;
     name?: string;
@@ -37,7 +37,7 @@ interface Unit< Q extends PhysicalQuantity > {
 }
 
 // Interface describing a physical quantity and its units
-interface Quantity< Q extends PhysicalQuantity > {
+type Quantity< Q extends PhysicalQuantity > = {
     dimension: {
         symbol: string;
         name: string;
