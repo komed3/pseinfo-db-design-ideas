@@ -1,3 +1,7 @@
+import { Collection } from '../abstract/collection';
+import { FormCollection } from '../abstract/form';
+import { DeepPartial } from '../abstract/utils';
+
 // List of all element symbols from the periodic table
 export const ElementSymbol = [
     'h', 'he', 'li', 'be', 'b', 'c', 'n', 'o', 'f', 'ne', 'na', 'mg', 'al', 'si', 'p', 's',
@@ -12,3 +16,15 @@ export const ElementSymbol = [
 
 // Type representing any valid element symbol
 export type ElementSymbol = ( typeof ElementSymbol )[ number ];
+
+// Type for a single element entry (all properties)
+type SingleElement = Collection< {
+    // not yet implemented
+} >;
+
+// Collection type for all elements, indexed by their symbol
+export type ElementCollection = {
+    [ K in ElementSymbol ]: SingleElement & {
+        forms?: FormCollection< DeepPartial< SingleElement > >;
+    };
+};
