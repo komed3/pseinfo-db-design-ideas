@@ -1,9 +1,7 @@
 import { RequireFrom } from './utils';
 
-// List of uncertainty types
+// Uncertainty types
 export const UncertaintyType = [ 'absolute', 'relative', 'asymmetrical' ] as const;
-
-// Type representing any valid uncertainty type
 export type UncertaintyType = ( typeof UncertaintyType )[ number ];
 
 // Field definitions for uncertainty types

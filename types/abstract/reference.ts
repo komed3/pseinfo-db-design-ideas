@@ -1,13 +1,12 @@
 import { ExtractFrom, RequireAtLeastOne, RequireExactlyOne, StrictSubset } from './utils';
 
-// List of reference types based on BibTeX
+// Reference types based on BibTeX
 export const ReferenceType = [
     'article', 'book', 'booklet', 'conference', 'inbook', 'incollection', 'inproceedings',
     'manual', 'mastersthesis', 'thesis', 'misc', 'phdthesis', 'proceedings', 'techreport',
     'unpublished'
 ] as const;
 
-// Type representing any valid reference type
 export type ReferenceType = ( typeof ReferenceType )[ number ];
 
 // Field definitions for reference types

@@ -1,12 +1,11 @@
 import { Collection, Distinct } from './collection';
 
-// List of all form types for substances
+// Form types for substances
 export const FormType = [
     'allotrope', 'phase', 'molecular', 'polymorph', 'morphology',
     'crystalSystem', 'amorphous', 'nanostructure', 'other'
 ] as const;
 
-// Type representing any valid form type
 export type FormType = ( typeof FormType )[ number ];
 
 // Form IDs used in other parts of the data model

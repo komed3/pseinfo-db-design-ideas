@@ -1,13 +1,12 @@
-// List of SI base dimensions
+// SI base dimensions
 export const SIDimension = [
     'time', 'length', 'mass', 'electricCurrent', 'temperature',
     'amountOfSubstance', 'luminousIntensity'
 ] as const;
 
-// Type representing any valid SI base dimension
 export type SIDimension = ( typeof SIDimension )[ number ];
 
-// List of all physical quantities including SI base dimensions and derived quantities
+// All physical quantities including SI base dimensions and derived quantities
 export const PhysicalQuantity = [ ...SIDimension,
     'absorbedDose', 'acceleration', 'area', 'capacitance', 'catalyticActivity',
     'charge', 'concentration', 'conductance', 'density', 'electricPotential',
@@ -17,7 +16,6 @@ export const PhysicalQuantity = [ ...SIDimension,
     'thermalConductivity', 'velocity', 'volume'
 ] as const;
 
-// Type representing any valid physical quantity
 export type PhysicalQuantity = ( typeof PhysicalQuantity )[ number ];
 
 // A vector representing the powers of each base dimension in the order:

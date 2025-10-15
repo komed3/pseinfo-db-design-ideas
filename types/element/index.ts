@@ -14,7 +14,6 @@ export const ElementSymbol = [
     'bh', 'hs', 'mt', 'ds', 'rg', 'cn', 'nh', 'fl', 'mc', 'lv', 'ts', 'og'
 ] as const;
 
-// Type representing any valid element symbol
 export type ElementSymbol = ( typeof ElementSymbol )[ number ];
 
 // Type for a single element entry (all properties)
