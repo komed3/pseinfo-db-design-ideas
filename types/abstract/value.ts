@@ -51,20 +51,23 @@ export type RangeValue< Q extends PhysicalQuantity = PhysicalQuantity > =
     >;
 
 // Coupled value type definitions
-export type CoupledNumberValue =
+export type CoupledNumberValue< Q extends PhysicalQuantity = PhysicalQuantity > =
     BaseFields< 'coupled' > & {
         properties: RequireAtLeastOne< {
-            [ K in PhysicalQuantity ]?:
+            [ K in Q ]?:
                 | SingleValue< K >
                 | ArrayValue< K >
                 | RangeValue< K >;
         } >;
     };
 
-export type CoupledValue< T extends Primitive = Primitive > =
+export type CoupledValue<
+    Q extends PhysicalQuantity = PhysicalQuantity,
+    T extends Primitive = Primitive
+> =
     BaseFields< 'coupled' > & {
         properties: RequireAtLeastOne< {
-            [ K in PhysicalQuantity ]?:
+            [ K in Q ]?:
                 | PrimitiveValue< T >
                 | SingleValue< K >
                 | ArrayValue< K >
@@ -77,7 +80,7 @@ export type NumberValue< Q extends PhysicalQuantity = PhysicalQuantity > =
     | SingleValue< Q >
     | ArrayValue< Q >
     | RangeValue< Q >
-    | CoupledNumberValue;
+    | CoupledNumberValue< Q >;
 
 export type Value<
     Q extends PhysicalQuantity = PhysicalQuantity,
@@ -85,4 +88,4 @@ export type Value<
 > =
     | NumberValue< Q >
     | PrimitiveValue< T >
-    | CoupledValue< T >;
+    | CoupledValue< Q, T >;
