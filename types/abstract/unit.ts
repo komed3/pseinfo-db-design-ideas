@@ -48,8 +48,8 @@ interface Quantity< Q extends PhysicalQuantity > {
     units: Record< string, Unit< Q > >;
 }
 
-// Collection of physical quantities
-export type QuantityCollection = {
+// Collection of physical quantities and their units
+export type UnitCollection = {
     [ Q in PhysicalQuantity ]: Quantity< Q >;
 };
 
