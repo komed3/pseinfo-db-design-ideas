@@ -33,13 +33,24 @@ export type ElementProperty = ( typeof ElementProperty )[ number ];
 export const NaturalOccurrence = [ 'primordial', 'decayProduct', 'synthetic' ] as const;
 export type NaturalOccurrence = ( typeof NaturalOccurrence )[ number ];
 
-// Goldschmidt classification types
-export const Goldschmidt = [ 'atmophile', 'chalcophile', 'lithophile', 'siderophile', 'synthetic' ] as const;
-export type Goldschmidt = ( typeof Goldschmidt )[ number ];
-
 // Superconductivity types
 export const Superconductivity = [ 'none', 'normal', 'special' ] as const;
 export type Superconductivity = ( typeof Superconductivity )[ number ];
+
+// Goldschmidt classification types
+export const Goldschmidt = [
+    'atmophile', 'chalcophile', 'lithophile', 'siderophile', 'synthetic'
+] as const;
+
+export type Goldschmidt = ( typeof Goldschmidt )[ number ];
+
+// Crystal structure types
+export const CrystalStructure = [
+    'hex', 'hcp', 'bcc', 'rho', 'sc', 'fcc', 'dc',
+    'orth', 'tetr', 'dhcp', 'mon'
+] as const;
+
+export type CrystalStructure = ( typeof CrystalStructure )[ number ];
 
 // Registry identifiers for substances
 export type RegistryGroup = Group< {
@@ -51,4 +62,20 @@ export type RegistryGroup = Group< {
     eg?: Distinct< string >;
     wikidata?: Distinct< string >;
     rtecs?: Distinct< string >;
+} >;
+
+// Crystal structure information
+export type CrystalGroup = Group< {
+    crystalStructure?: Distinct< CrystalStructure >;
+    pearsonSymbol?: Distinct< string >;
+    spaceGroup?: Distinct< string >;
+    spaceGroupNumber?: Distinct< number >;
+    latticeConstant?: Group< {
+        a?: Distinct< number >;
+        b?: Distinct< number >;
+        c?: Distinct< number >;
+        alpha?: Distinct< number >;
+        beta?: Distinct< number >;
+        gamma?: Distinct< number >;
+    } >;
 } >;
