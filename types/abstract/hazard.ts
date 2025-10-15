@@ -29,3 +29,11 @@ export type ADRClass = ( typeof ADRClass )[ number ];
 export type HStatement = `H${ '2' | '3' | '4' | '5' }${ string }`;
 export type PStatement = `P${ '1' | '2' | '3' | '4' | '5' }${ string }`;
 export type EUHStatement = `EUH${ '0' | '2' | '3' | '4' }${ string }`;
+
+// NFPA 704 standard
+export type NFPA = {
+    flammability: 0 | 1 | 2 | 3 | 4;
+    health: 0 | 1 | 2 | 3 | 4;
+    instability: 0 | 1 | 2 | 3 | 4;
+    special?: 'W' | 'OX' | 'SA' | 'ACID' | 'ALK' | 'COR' | 'BIO' | 'RAC';
+};
