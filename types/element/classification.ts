@@ -1,6 +1,7 @@
 import { Collection, Distinct } from '../abstract/collection';
 import { ElementBlock, ElementSet, Goldschmidt, NaturalOccurrence, Phase, Superconductivity } from '../abstract/helper';
 
+// Collection of classification properties
 export type ClassificationCollection = Collection< {
     symbol: Distinct< string >;
     atomicNumber: Distinct< number >;
@@ -15,3 +16,6 @@ export type ClassificationCollection = Collection< {
     goldschmidt?: Distinct< Goldschmidt >;
     superconductivity?: Distinct< Superconductivity >;
 } >;
+
+// Keys of the classification collection
+export type ClassificationKeys = keyof ClassificationCollection;
