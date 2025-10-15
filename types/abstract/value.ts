@@ -1,0 +1,88 @@
+import { Uncertainty } from './uncertainty';
+import { RefId } from './reference';
+import { PhysicalQuantity, UnitId } from './unit';
+import { Primitive, RequireAtLeastOne, StrictSubset } from './utils';
+
+// Value types
+export const ValueType = [ 'primitive', 'single', 'array', 'range', 'coupled' ] as const;
+export type ValueType = ( typeof ValueType )[ number ];
+
+// Confidence levels
+export const ValueConfidence = [ 'measured', 'calculated', 'estimated', 'theoretical', 'experimental' ] as const;
+export type ValueConfidence = ( typeof ValueConfidence )[ number ];
+
+// Field definitions for value types
+interface BaseFields< T extends ValueType > {
+    type: T;
+    confidence?: ValueConfidence;
+    uncertainty?: Uncertainty;
+    references?: RefId[];
+    note?: string;
+}
+
+interface ValueFields< Q extends PhysicalQuantity = PhysicalQuantity > {
+    value?: number;
+    values?: number[];
+    range?: RequireAtLeastOne< Record< 'lower' | 'upper', {
+        value: number;
+        uncertainty?: Uncertainty;
+        inclusive?: boolean;
+    } > >;
+    unit_ref?: UnitId< Q >;
+}
+
+// Specific value type definitions
+export type PrimitiveValue< T extends Primitive = Primitive > =
+    BaseFields< 'primitive' > & { value: T };
+
+export type SingleValue< Q extends PhysicalQuantity = PhysicalQuantity > =
+    BaseFields< 'single' > & StrictSubset<
+        ValueFields< Q >, 'value', 'unit_ref'
+    >;
+
+export type ArrayValue< Q extends PhysicalQuantity = PhysicalQuantity > =
+    BaseFields< 'array' > & StrictSubset<
+        ValueFields< Q >, 'values', 'unit_ref'
+    >;
+
+export type RangeValue< Q extends PhysicalQuantity = PhysicalQuantity > =
+    BaseFields< 'range' > & StrictSubset<
+        ValueFields< Q >, 'range', 'value' | 'unit_ref'
+    >;
+
+// Coupled value type definitions
+export type CoupledNumberValue =
+    BaseFields< 'coupled' > & {
+        properties: RequireAtLeastOne< {
+            [ K in PhysicalQuantity ]?:
+                | SingleValue< K >
+                | ArrayValue< K >
+                | RangeValue< K >;
+        } >;
+    };
+
+export type CoupledValue< T extends Primitive = Primitive > =
+    BaseFields< 'coupled' > & {
+        properties: RequireAtLeastOne< {
+            [ K in PhysicalQuantity ]?:
+                | PrimitiveValue< T >
+                | SingleValue< K >
+                | ArrayValue< K >
+                | RangeValue< K >;
+        } >;
+    };
+
+// Union value types
+export type NumberValue< Q extends PhysicalQuantity = PhysicalQuantity > =
+    | SingleValue< Q >
+    | ArrayValue< Q >
+    | RangeValue< Q >
+    | CoupledNumberValue;
+
+export type Value<
+    Q extends PhysicalQuantity = PhysicalQuantity,
+    T extends Primitive = Primitive
+> =
+    | NumberValue< Q >
+    | PrimitiveValue< T >
+    | CoupledValue< T >;
