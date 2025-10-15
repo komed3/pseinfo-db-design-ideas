@@ -65,6 +65,6 @@ export type Hazard = Group< {
         adr?: Distinct< ADRClass[] >;
         dot?: Distinct< DOTClass[] >;
     } >;
-    nfpa?: NFPA;
-    note?: string;
+    nfpa?: Distinct< NFPA >;
+    note?: Distinct< string >;
 } >;
