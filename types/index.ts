@@ -5,7 +5,7 @@ import { ElementCollection } from './element';
 
 // Root database type
 export type DataBase = Collection< {
-    element: ElementCollection;
-    units: UnitCollection;
+    elements: ElementCollection;
     references: ReferenceCollection;
+    units: UnitCollection;
 } >;
