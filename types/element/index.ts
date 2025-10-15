@@ -6,6 +6,7 @@ import { ChemistryCollection } from './chemistry';
 import { ClassificationCollection } from './classification';
 import { DescriptiveCollection } from './descriptive';
 import { PhysicsCollection } from './physics';
+import { SafetyCollection } from './safety';
 
 // List of all element symbols from the periodic table
 export const ElementSymbol = [
@@ -28,6 +29,7 @@ type SingleElement = Collection< {
     atomics?: AtomicsCollection;
     physics?: PhysicsCollection;
     chemistry?: ChemistryCollection;
+    safety?: SafetyCollection;
 } >;
 
 // Collection type for all elements, indexed by their symbol
