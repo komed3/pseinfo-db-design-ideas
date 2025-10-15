@@ -5,6 +5,7 @@ import { AtomicsCollection } from './atomics';
 import { ChemistryCollection } from './chemistry';
 import { ClassificationCollection } from './classification';
 import { DescriptiveCollection } from './descriptive';
+import { PhysicsCollection } from './physics';
 
 // List of all element symbols from the periodic table
 export const ElementSymbol = [
@@ -25,6 +26,7 @@ type SingleElement = Collection< {
     classification: ClassificationCollection;
     descriptive: DescriptiveCollection;
     atomics?: AtomicsCollection;
+    physics: PhysicsCollection;
     chemistry?: ChemistryCollection;
 } >;
 
