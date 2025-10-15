@@ -1,6 +1,7 @@
 import { Collection } from '../abstract/collection';
 import { FormCollection } from '../abstract/form';
 import { DeepPartial } from '../abstract/utils';
+import { AtomicsCollection } from './atomics';
 import { ClassificationCollection } from './classification';
 import { DescriptiveCollection } from './descriptive';
 
@@ -22,6 +23,7 @@ export type ElementSymbol = ( typeof ElementSymbol )[ number ];
 type SingleElement = Collection< {
     classification: ClassificationCollection;
     descriptive: DescriptiveCollection;
+    atomics: AtomicsCollection;
 } >;
 
 // Collection type for all elements, indexed by their symbol

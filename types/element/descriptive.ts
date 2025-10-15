@@ -2,7 +2,6 @@ import { Collection, Distinct, Group, LangGroup, Single } from '../abstract/coll
 import { ElementProperty, RegistryGroup } from '../abstract/helper';
 import { NumberProperty, PrimitiveProperty } from '../abstract/property';
 
-// Collection of descriptive properties
 export type DescriptiveCollection = Collection< {
     registry: RegistryGroup;
     names: LangGroup< 'en' | 'la' >;
@@ -39,6 +38,3 @@ export type DescriptiveCollection = Collection< {
     }[] >;
     wiki?: LangGroup;
 } >;
-
-// Keys of the descriptive collection
-export type DescriptiveKeys = keyof DescriptiveCollection;
