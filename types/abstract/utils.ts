@@ -26,3 +26,9 @@ export type RequireExactlyOne< T, K extends keyof T = keyof T > = {
 export type RequireAtLeastOne< T extends object, K extends keyof T = keyof T > = {
     [ O in K ]: RequireFrom< T, O > & ExtractFrom< T, Exclude< K, O > >;
 }[ K ] & Pick< T, Exclude< keyof T, K > >;
+
+// Recursively make all properties in T optional
+export type DeepPartial< T > = {
+    [ P in keyof T ]?: T[ P ] extends ( infer U )[] ? DeepPartial< U >[] :
+    T[ P ] extends object ? DeepPartial< T[ P ] > : T[ P ];
+};
