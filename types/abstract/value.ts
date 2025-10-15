@@ -1,5 +1,4 @@
 import { Uncertainty } from './uncertainty';
-import { RefId } from './reference';
 import { PhysicalQuantity, UnitId } from './unit';
 import { Primitive, RequireAtLeastOne, StrictSubset } from './utils';
 
@@ -16,7 +15,6 @@ interface BaseFields< T extends ValueType > {
     type: T;
     confidence?: ValueConfidence;
     uncertainty?: Uncertainty;
-    references?: RefId[];
     note?: string;
 }
 
