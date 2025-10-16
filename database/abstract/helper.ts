@@ -53,6 +53,14 @@ export const CrystalStructure = [
 
 export type CrystalStructure = ( typeof CrystalStructure )[ number ];
 
+// Meta data / schema version
+export type MetaData = {
+    _metadata: {
+        lastModified: string;
+        schemaVersion: 1;
+    }
+}
+
 // Classification information
 export type Registry = Group< {
     cas: Distinct< string >;

@@ -1,5 +1,6 @@
 import { Collection } from '../abstract/collection';
 import { FormCollection } from '../abstract/form';
+import { MetaData } from '../abstract/helper';
 import { AtomicsCollection } from './atomics';
 import { ChemistryCollection } from './chemistry';
 import { ClassificationCollection } from './classification';
@@ -33,7 +34,7 @@ type SingleElement = Collection< {
 
 // Collection type for all elements, indexed by their symbol
 export type ElementCollection = {
-    [ K in ElementSymbol ]: SingleElement & {
+    [ K in ElementSymbol ]: MetaData & SingleElement & {
         forms?: FormCollection< SingleElement >;
     };
 };

@@ -3,6 +3,10 @@ import { ElementCollection } from '../database/element';
 // @ts-expect-error
 export const hydrogen: ElementCollection = {
     h: {
+        _metadata: {
+            lastModified: '2025-10-16T12:00:00Z',
+            schemaVersion: 1
+        },
         classification: {
             symbol: 'H',
             atomicNumber: 1,
