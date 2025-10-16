@@ -6,7 +6,7 @@ export type UncertaintyType = ( typeof UncertaintyType )[ number ];
 
 // Field definitions for uncertainty types
 interface BaseFields< T extends UncertaintyType > {
-    type: T;
+    _type: T;
     confidence?: number;
     note?: string;
 }

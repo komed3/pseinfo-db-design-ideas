@@ -13,7 +13,7 @@ export type FormId = string;
 
 // Collection of forms for substances
 export type FormCollection< T > = Record< FormId, Collection< {
-    type: Distinct< FormType >;
+    _type: Distinct< FormType >;
     formula: Distinct< string >;
     note?: Distinct< string >;
     properties?: Collection< T >;

@@ -88,7 +88,7 @@ export type CrystalSystem = Group< {
 
 // Toxicity information
 export type Toxicity = Distinct< {
-    type: 'EC50' | 'LC50' | 'LD50' | 'TD50' | 'LOAEL' | 'LOEL' | 'NOAEL' | 'NOEL';
+    _type: 'EC50' | 'LC50' | 'LD50' | 'TD50' | 'LOAEL' | 'LOEL' | 'NOAEL' | 'NOEL';
     organism: string;
     value: SingleValue< 'massFraction' > | RangeValue< 'massFraction' >;
     application?: 'oral' | 'dermal' | 'inhalation' | 'intravenous' | 'intraperitoneal' | 'subcutaneous';

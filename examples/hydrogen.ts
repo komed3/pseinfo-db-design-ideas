@@ -38,12 +38,12 @@ export const hydrogen: ElementCollection = {
         },
         physics: {
             density: {
-                type: 'single',
+                _type: 'single',
                 value: 0.0899,
                 unit_ref: [ 'density', 'kgm' ],
                 conditions: {
                     temperature: {
-                        type: 'single',
+                        _type: 'single',
                         value: 273,
                         unit_ref: [ 'temperature', 'K' ]
                     }
@@ -52,17 +52,17 @@ export const hydrogen: ElementCollection = {
         },
         forms: {
             liquid: {
-                type: 'phase',
+                _type: 'phase',
                 phase: 'liquid',
                 properties: {
                     physics: {
                         density: {
-                            type: 'single',
+                            _type: 'single',
                             value: 0.0709,
                             unit_ref: [ 'density', 'kgL' ],
                             conditions: {
                                 temperature: {
-                                    type: 'single',
+                                    _type: 'single',
                                     value: 20.32,
                                     unit_ref: [ 'temperature', 'K' ]
                                 }
@@ -72,7 +72,7 @@ export const hydrogen: ElementCollection = {
                 }
             },
             dihydrogen: {
-                type: 'molecular',
+                _type: 'molecular',
                 formula: 'H{2}',
                 properties: {
                     descriptive: {

@@ -12,7 +12,7 @@ export type ValueConfidence = ( typeof ValueConfidence )[ number ];
 
 // Field definitions for value types
 interface BaseFields< T extends ValueType > {
-    type: T;
+    _type: T;
     confidence?: ValueConfidence;
     uncertainty?: Uncertainty;
     note?: string;

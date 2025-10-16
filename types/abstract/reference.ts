@@ -11,7 +11,7 @@ export type ReferenceType = ( typeof ReferenceType )[ number ];
 
 // Field definitions for reference types
 interface BaseFields< T extends ReferenceType > {
-    type: T;
+    _type: T;
     accessed?: string;
     url?: string;
     doi?: string;
