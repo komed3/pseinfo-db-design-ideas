@@ -42,6 +42,10 @@ export const DOTClass = [
 
 export type DOTClass = ( typeof DOTClass )[ number ];
 
+// (ADR) warning label
+export type HazardIdentification = `${ 'X' | '' }${ number }`;
+export type UNNumber = `${ '0' | '1' | '2' | '3' | '8' | '9' }${ number }`;
+
 // NFPA 704 standard
 export type NFPA = {
     flammability: 0 | 1 | 2 | 3 | 4;
@@ -65,6 +69,10 @@ export type Hazard = Group< {
         adr?: Distinct< ADRClass[] >;
         dot?: Distinct< DOTClass[] >;
     } >;
+    label?: Distinct< {
+        hazNo: HazardIdentification;
+        unNo: UNNumber;
+    }[] >;
     nfpa?: Distinct< NFPA >;
     note?: Distinct< string >;
 } >;
