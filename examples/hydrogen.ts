@@ -35,6 +35,31 @@ export const hydrogen: ElementCollection = {
                 la: 'Hydrogenium',
                 de: 'Wasserstoff'
             }
+        },
+        forms: {
+            dihydrogen: {
+                type: 'molecular',
+                formula: 'H{2}',
+                properties: {
+                    descriptive: {
+                        registry: {
+                            cas: '1333-74-0',
+                            cid: '783',
+                            eg: '215-605-7',
+                            wikidata: 'Q3027893'
+                        },
+                        identifier: {
+                            inChI: 'InChI=1S/H2/h1H',
+                            inChIkey: 'InChIKey=UFHFLCQGNIYNRP-UHFFFAOYSA-N',
+                            smiles: '[HH]'
+                        },
+                        names: {
+                            en: 'Dihydrogen',
+                            de: 'Molekularer Wasserstoff'
+                        }
+                    }
+                }
+            }
         }
     }
 } as const;
