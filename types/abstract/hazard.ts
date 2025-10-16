@@ -48,10 +48,10 @@ export type UNNumber = `${ '0' | '1' | '2' | '3' | '8' | '9' }${ number }`;
 
 // NFPA 704 standard
 export type NFPA = {
-    flammability: 0 | 1 | 2 | 3 | 4;
     health: 0 | 1 | 2 | 3 | 4;
-    instability: 0 | 1 | 2 | 3 | 4;
-    special?: 'W' | 'OX' | 'SA' | 'ACID' | 'ALK' | 'COR' | 'BIO' | 'RAC';
+    fire: 0 | 1 | 2 | 3 | 4;
+    reactivity: 0 | 1 | 2 | 3 | 4;
+    specific?: 'W' | 'OX' | 'SA' | 'COR' | 'ACID' | 'ALK' | 'BIO' | 'POI' | 'RAD' | 'CRY';
 };
 
 // Hazardous information
