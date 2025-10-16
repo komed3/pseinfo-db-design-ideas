@@ -1,9 +1,10 @@
 import { Collection, Distinct, Group, LangGroup, Single } from '../abstract/collection';
-import { ElementProperty, Registry } from '../abstract/helper';
+import { ElementProperty, Identifier, Registry } from '../abstract/helper';
 import { NumberProperty, PrimitiveProperty } from '../abstract/property';
 
 export type DescriptiveCollection = Collection< {
     registry: Registry;
+    identifier: Identifier;
     names: LangGroup< 'en' | 'la' >;
     appearance?: LangGroup;
     abundance?: Group< {

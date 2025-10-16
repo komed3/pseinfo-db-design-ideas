@@ -53,16 +53,21 @@ export const CrystalStructure = [
 
 export type CrystalStructure = ( typeof CrystalStructure )[ number ];
 
-// Registry identifiers for substances
+// Classification information
 export type Registry = Group< {
     cas: Distinct< string >;
-    inChI: Distinct< string >;
-    inChIkey: Distinct< string >;
     cid: Distinct< string >;
     echa?: Distinct< string >;
     eg?: Distinct< string >;
-    wikidata?: Distinct< string >;
-    rtecs?: Distinct< string >;
+    wikidata?: Distinct< `Q${ string }` >;
+    rtecs?: Distinct< `RTECS${ string }` >;
+} >;
+
+// Chemical identifiers
+export type Identifier = Group< {
+    inChI: Distinct< `InChI=${ string }` >;
+    inChIkey: Distinct< `InChIKey=${ string }` >;
+    smiles?: Distinct< string >;
 } >;
 
 // Crystal structure information
