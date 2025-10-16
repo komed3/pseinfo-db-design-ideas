@@ -1,4 +1,4 @@
-import { ElementCollection } from '../types/element';
+import { ElementCollection } from '../database/element';
 
 // @ts-expect-error
 export const hydrogen: ElementCollection = {
