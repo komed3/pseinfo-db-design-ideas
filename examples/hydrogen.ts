@@ -36,7 +36,41 @@ export const hydrogen: ElementCollection = {
                 de: 'Wasserstoff'
             }
         },
+        physics: {
+            density: {
+                type: 'single',
+                value: 0.0899,
+                unit_ref: [ 'density', 'kgm' ],
+                conditions: {
+                    temperature: {
+                        type: 'single',
+                        value: 273,
+                        unit_ref: [ 'temperature', 'K' ]
+                    }
+                }
+            }
+        },
         forms: {
+            liquid: {
+                type: 'phase',
+                phase: 'liquid',
+                properties: {
+                    physics: {
+                        density: {
+                            type: 'single',
+                            value: 0.0709,
+                            unit_ref: [ 'density', 'kgL' ],
+                            conditions: {
+                                temperature: {
+                                    type: 'single',
+                                    value: 20.32,
+                                    unit_ref: [ 'temperature', 'K' ]
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             dihydrogen: {
                 type: 'molecular',
                 formula: 'H{2}',
