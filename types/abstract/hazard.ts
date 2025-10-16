@@ -6,7 +6,7 @@ export type PStatement = `P${ '1' | '2' | '3' | '4' | '5' }${ string }`;
 export type EUHStatement = `EUH${ '0' | '2' | '3' | '4' }${ string }`;
 
 // Hazard signal words
-export const SignalWord = [ 'danger', 'warning' ] as const;
+export const SignalWord = [ 'danger', 'warning', 'caution' ] as const;
 export type SignalWord = ( typeof SignalWord )[ number ];
 
 // GHS pictograms
