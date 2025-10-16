@@ -1,6 +1,5 @@
 import { Collection } from '../abstract/collection';
 import { FormCollection } from '../abstract/form';
-import { DeepPartial } from '../abstract/utils';
 import { AtomicsCollection } from './atomics';
 import { ChemistryCollection } from './chemistry';
 import { ClassificationCollection } from './classification';
@@ -35,6 +34,6 @@ type SingleElement = Collection< {
 // Collection type for all elements, indexed by their symbol
 export type ElementCollection = {
     [ K in ElementSymbol ]: SingleElement & {
-        forms?: FormCollection< DeepPartial< SingleElement > >;
+        forms?: FormCollection< SingleElement >;
     };
 };
