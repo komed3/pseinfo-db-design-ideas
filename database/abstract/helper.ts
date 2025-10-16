@@ -58,8 +58,8 @@ export type MetaData = {
     _metadata: {
         lastModified: string;
         schemaVersion: 1;
-    }
-}
+    };
+};
 
 // Classification information
 export type Registry = Group< {
