@@ -14,3 +14,10 @@ type ComparisonOperators< T > = {
     regexFlags?: T extends string ? string : never;
     exists?: boolean;
 };
+
+// Logical operators for combining conditions
+type LogicalOperators< T > = {
+    $and?: QueryCondition< T >[];
+    $or?: QueryCondition< T >[];
+    $not?: QueryCondition< T >;
+};
