@@ -3,7 +3,7 @@ import { PaginationOptions, SortOptions } from './modifier';
 import { SelectOptions } from './select';
 
 // Query for a single collection with all options
-type CollectionQuery< T > = QueryCondition< T > & PaginationOptions & SortOptions< T > & SelectOptions< T > & {
+export type CollectionQuery< T > = QueryCondition< T > & PaginationOptions & SortOptions< T > & SelectOptions< T > & {
     $group?: ( keyof T )[];
     $aggregate?: {
         [ K in keyof T ]?: 'count' | 'sum' | 'avg' | 'min' | 'max';
