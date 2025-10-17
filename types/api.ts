@@ -21,3 +21,10 @@ type LogicalOperators< T > = {
     $or?: QueryCondition< T >[];
     $not?: QueryCondition< T >;
 };
+
+// Array operators
+type ArrayOperators< T > = {
+    all?: T extends Array< infer U > ? U[] : never;
+    match?: T extends Array< infer U > ? QueryCondition< U > : never;
+    size?: T extends Array< any > ? number : never;
+};
