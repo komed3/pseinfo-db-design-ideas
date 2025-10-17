@@ -1,0 +1,16 @@
+// Comparison operators for primitive values
+type ComparisonOperators< T > = {
+    eq?: T;
+    ne?: T;
+    gt?: T extends number ? T : never;
+    gte?: T extends number ? T : never;
+    lt?: T extends number ? T : never;
+    lte?: T extends number ? T : never;
+    between?: T extends number ? [ T, T ] : never;
+    notBetween?: T extends number ? [ T, T ] : never;
+    in?: T[];
+    notIn?: T[];
+    regex?: T extends string ? string : never;
+    regexFlags?: T extends string ? string : never;
+    exists?: boolean;
+};
