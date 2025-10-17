@@ -1,9 +1,7 @@
-import { CollectionQuery, Query } from '../types/api';
-import { DataBase } from '../types/database';
-import { ElementCollection } from '../types/element';
+import { Query } from '../types/api';
 
 // Example 1: Basic element query
-type Example1 = Query< DataBase > & {
+type Example1 = Query & {
     elements: {
         symbol: { regex: '^[A-Z][a-z]?$' };
         atomicNumber: { between: [ 1, 36 ] };
@@ -12,7 +10,7 @@ type Example1 = Query< DataBase > & {
 };
 
 // Example 2: Complex nested query
-type Example2 = Query< DataBase > & {
+type Example2 = Query & {
     elements: {
         'classification.phase': { eq: 'solid' };
         'physics.density': { gt: 5 };
@@ -23,7 +21,7 @@ type Example2 = Query< DataBase > & {
 };
 
 // Example 3: Multiple collections
-type Example3 = Query< DataBase > & {
+type Example3 = Query & {
     elements: {
         'classification.radioactive': true;
         $select: [ 'classification.symbol', 'classification.atomicNumber' ];
@@ -33,21 +31,4 @@ type Example3 = Query< DataBase > & {
         year: { gte: 2000 };
     };
     $include: [ 'elements', 'references' ];
-};
-
-// Example 4: Logical operators
-type Example4 = CollectionQuery< ElementCollection[ 'h' ] > & {
-    $or: [
-        { 'classification.block': { eq: 's' } },
-        { 'classification.block': { eq: 'p' } }
-    ];
-    'physics.temperature.meltingTemp': { lt: 300 };
-};
-
-// Example 5: Array operations
-type Example5 = CollectionQuery< ElementCollection[ 'h' ] > & {
-    'descriptive.properties': {
-        elemMatch: { eq: 'radioactive' };
-    };
-    'atomics.ionization': { exists: true };
 };

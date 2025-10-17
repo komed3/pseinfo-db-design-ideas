@@ -1,6 +1,8 @@
 import { QueryCondition } from './condition';
 import { PaginationOptions, SortOptions } from './modifier';
 import { FieldPaths, SelectOptions } from './select';
+import { DataBase } from '../database';
+import { ElementCollection } from '../element';
 
 // Query for a single collection with all options
 export type CollectionQuery< T > = QueryCondition< T > & PaginationOptions & SortOptions< T > & SelectOptions< T > & {
@@ -12,29 +14,29 @@ export type CollectionQuery< T > = QueryCondition< T > & PaginationOptions & Sor
 };
 
 // Extract collection names from DataBase type
-type CollectionNames< DB > = {
-    [ K in keyof DB ]: DB[ K ] extends Record< string, any > ? K : never;
-}[ keyof DB ];
+type CollectionNames< C > = {
+    [ K in keyof C ]: C[ K ] extends Record< string, any > ? K : never;
+}[ keyof C ];
 
 // Query for entire database
-export type Query< DB > = {
-    [ K in CollectionNames< DB > ]?: DB[ K ] extends Record< infer Key, infer Value >
-        ? Key extends string
-            ? CollectionQuery< Value > | {
-                [ SubKey in Key ]?: CollectionQuery< Value >;
+export type Query< C = DataBase > = {
+    [ K in CollectionNames< C > ]?: C[ K ] extends Record< infer K, infer V >
+        ? K extends string
+            ? CollectionQuery< V > | {
+                [ S in K ]?: CollectionQuery< V >;
             }
             : never
         : never;
 } & {
-    $include?: CollectionNames< DB >[];
-    $exclude?: CollectionNames< DB >[];
+    $include?: CollectionNames< C >[];
+    $exclude?: CollectionNames< C >[];
     $globalLimit?: number;
 };
 
 // Specialized queries
-export type ElementQuery< EC > = {
-    [ K in keyof EC ]?: CollectionQuery< EC[ K ] >;
-} & CollectionQuery< EC extends Record< string, infer E > ? E : never >;
+export type ElementQuery = {
+    [ K in keyof ElementCollection ]?: CollectionQuery< ElementCollection[ K ] >;
+} & CollectionQuery< ElementCollection extends Record< string, infer E > ? E : never >;
 
 // Query builder interface for fluent API
 export interface QueryBuilder< T > {
