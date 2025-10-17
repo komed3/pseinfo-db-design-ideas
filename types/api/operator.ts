@@ -1,3 +1,5 @@
+import { QueryCondition } from './condition';
+
 // Comparison operators for primitive values
 export type ComparisonOperators< T > = {
     exists?: boolean;
