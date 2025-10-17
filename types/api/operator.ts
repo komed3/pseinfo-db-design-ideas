@@ -1,5 +1,5 @@
 // Comparison operators for primitive values
-type ComparisonOperators< T > = {
+export type ComparisonOperators< T > = {
     exists?: boolean;
     eq?: T;
     ne?: T;
@@ -16,14 +16,14 @@ type ComparisonOperators< T > = {
 };
 
 // Logical operators for combining conditions
-type LogicalOperators< T > = {
+export type LogicalOperators< T > = {
     $and?: QueryCondition< T >[];
     $or?: QueryCondition< T >[];
     $not?: QueryCondition< T >;
 };
 
 // Array operators
-type ArrayOperators< T > = {
+export type ArrayOperators< T > = {
     all?: T extends Array< infer U > ? U[] : never;
     match?: T extends Array< infer U > ? QueryCondition< U > : never;
     size?: T extends Array< any > ? number : never;
