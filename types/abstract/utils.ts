@@ -44,10 +44,6 @@ export type Paths< T, Prev extends string = '' > = {
 
 // Get the type of the value at a given dot-separated path P in object T
 export type PathValue< T, P extends string > =
-    P extends `${infer K}.${infer Rest}`
-        ? K extends keyof T
-            ? PathValue< T[ K ], Rest >
-            : never
-        : P extends keyof T
-            ? T[ P ]
-            : never;
+    P extends `${ infer K }.${ infer Rest }`
+        ? K extends keyof T ? PathValue< T[ K ], Rest > : never
+        : P extends keyof T ? T[ P ] : never;
