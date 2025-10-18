@@ -1,3 +1,4 @@
+import { QueryFilter } from './filter';
 import { QueryableCollection } from './helper';
 import { QuerySelect } from './select';
 import { QuerySortOptions } from './sort';
@@ -6,7 +7,7 @@ import { QuerySortOptions } from './sort';
 export type Query = {
     $from: QueryableCollection[];
     $select: QuerySelect;
-    $where?: any; // not yet implemented
+    $where?: QueryFilter;
     $sort?: QuerySortOptions;
     $limit?: number;
     $offset?: number;
