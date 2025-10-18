@@ -1,4 +1,4 @@
-import { QueryableCollection } from './path';
+import { QueryableCollection } from './helper';
 import { QuerySortOptions } from './sort';
 
 export type Query = {
