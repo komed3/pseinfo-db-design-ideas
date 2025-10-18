@@ -1,3 +1,7 @@
+import { ArrayProperty, PrimitiveProperty, RangeProperty, SingleProperty } from '../abstract/property';
+import { Primitive } from '../abstract/utils';
+import { QueryableProperty } from './helper';
+
 // Basic operators
 type BasicOperators< T > = {
     $eq?: T;
@@ -8,9 +12,9 @@ type BasicOperators< T > = {
 };
 
 // Special operators (linked to appropriate types)
-type BooleanOperators< T extends boolean = boolean > = BasicOperators< T >;
+type BooleanOperators = BasicOperators< boolean >;
 
-type NumberOperators< T extends number = number > = BasicOperators< T > & {
+type NumberOperators< T extends number > = BasicOperators< T > & {
     $gt?: T;
     $gte?: T;
     $lt?: T;
@@ -19,21 +23,18 @@ type NumberOperators< T extends number = number > = BasicOperators< T > & {
     $notBetween?: [ T, T ];
 };
 
-type StringOperators< T extends string = string > = BasicOperators< T > & {
-    $regex?: string | RegExp;
-    $startsWith?: string;
-    $endsWith?: string;
-    $contains?: string;
+type StringOperators< T extends string > = BasicOperators< T > & {
+    $regex?: T | RegExp;
+    $startsWith?: T;
+    $endsWith?: T;
+    $contains?: T;
     $length?: NumberOperators< number >;
 };
 
 type ArrayOperators< T, U > = BasicOperators< T > & {
     $size?: NumberOperators< number >;
-    $all?: U[];
-    $some?: U[];
-    $none?: U[];
-    $includes?: U;
-    $excludes?: U;
+    $includes?: U[];
+    $excludes?: U[];
     $match?: FieldCondition< U >;
     $every?: FieldCondition< U >;
 };
@@ -51,6 +52,22 @@ type LogicalOperators< T > = {
     $nor?: FieldCondition< T >[];
     $not?: FieldCondition< T >;
 };
+
+// Main operator type (operators for appropriate types)
+export type Operator< T > =
+    T extends QueryableProperty ?
+        T extends Primitive | PrimitiveProperty ?
+            T extends boolean | PrimitiveProperty< boolean > ? BooleanOperators :
+            T extends string | PrimitiveProperty< string > ? StringOperators< string > :
+            T extends number | PrimitiveProperty< number > ? NumberOperators< number > :
+            BasicOperators< T > :
+        T extends SingleProperty ? NumberOperators< number > :
+        T extends ArrayProperty ? ArrayOperators< T, number > :
+        T extends RangeProperty ? NumberOperators< number > :
+        never :
+    T extends Array< infer U > ? ArrayOperators< T, U > :
+    T extends Record< string, any > ? ObjectOperators< T > :
+    never;
 
 // Field operator mapping
 export type FieldCondition< T > = | T | Operator< T > | LogicalOperators< T > | (
