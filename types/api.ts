@@ -1,3 +1,1 @@
-import { Query } from './api/query';
-
-export { Query };
+export { Query } from './api/query';
