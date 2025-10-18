@@ -46,9 +46,15 @@ export type QueryResult< Q extends Query > = {
     query: Q;
     result: {
         data: QuerySelectResult< Q[ '$select' ] >;
-        references: ReferenceCollection;
-        units: DeepPartial< UnitCollection >;
-    };
+    } & (
+        Q[ '$options' ] extends { resolveRefs: true }
+            ? { references: ReferenceCollection }
+            : {}
+    ) & (
+        Q[ '$options' ] extends { resolveUnits: true }
+            ? { units: DeepPartial< UnitCollection > }
+            : {}
+    );
     metadata: {
         total: number;
         limit: number;

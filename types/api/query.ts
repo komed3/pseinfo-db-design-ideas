@@ -13,4 +13,9 @@ export type Query = {
     $sort?: QuerySortOptions;
     $offset?: number;
     $limit?: number;
+    $options?: {
+        resolveRefs?: boolean;
+        resolveUnits?: boolean;
+        units?: any; // not yet implemented
+    };
 };
