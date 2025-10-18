@@ -32,3 +32,22 @@ export type DeepPartial< T > = {
     [ P in keyof T ]?: T[ P ] extends ( infer U )[] ? DeepPartial< U >[] :
     T[ P ] extends object ? DeepPartial< T[ P ] > : T[ P ];
 };
+
+// Generate all possible dot-separated paths in a nested object T
+export type Paths< T, Prev extends string = '' > = {
+    [ K in keyof T & string ]:
+        T[ K ] extends Record< string, any >
+            ? | ( Prev extends '' ? K : `${Prev}.${K}` )
+              | Paths< T[ K ], Prev extends '' ? K : `${Prev}.${K}` >
+            : ( Prev extends '' ? K : `${Prev}.${K}` );
+}[ keyof T & string ];
+
+// Get the type of the value at a given dot-separated path P in object T
+export type PathValue< T, P extends string > =
+    P extends `${infer K}.${infer Rest}`
+        ? K extends keyof T
+            ? PathValue< T[ K ], Rest >
+            : never
+        : P extends keyof T
+            ? T[ P ]
+            : never;
