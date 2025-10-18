@@ -45,6 +45,7 @@ type ObjectOperators< T > = BasicOperators< T > & {
     $missing?: keyof T;
 };
 
+// Logical operators
 type LogicalOperators< T > = {
     $and?: FieldCondition< T >[];
     $or?: FieldCondition< T >[];
