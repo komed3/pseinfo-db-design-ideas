@@ -4,9 +4,9 @@ import { QueryableProperty } from './helper';
 
 // Basic operators
 type BasicOperators< T > = {
+    $exists?: boolean;
     $eq?: T;
     $ne?: T;
-    $exists?: boolean;
     $in?: T[];
     $notIn?: T[];
 };
@@ -36,7 +36,6 @@ type ArrayOperators< T, U > = BasicOperators< T > & {
     $includes?: U[];
     $excludes?: U[];
     $match?: FieldCondition< U >;
-    $every?: FieldCondition< U >;
 };
 
 type ObjectOperators< T > = BasicOperators< T > & {
@@ -49,8 +48,8 @@ type ObjectOperators< T > = BasicOperators< T > & {
 type LogicalOperators< T > = {
     $and?: FieldCondition< T >[];
     $or?: FieldCondition< T >[];
-    $xor?: FieldCondition< T >[];
     $nor?: FieldCondition< T >[];
+    $xor?: FieldCondition< T >[];
     $not?: FieldCondition< T >;
 };
 
