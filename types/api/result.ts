@@ -1,7 +1,9 @@
 import { HasSelection, CollectionValue, QueryableCollection } from './helper';
 import { Query } from './query';
-import { DataBase } from '../database';
+import { ReferenceCollection } from '../abstract/reference';
+import { UnitCollection } from '../abstract/unit';
 import { DeepPartial } from '../abstract/utils';
+import { DataBase } from '../database';
 
 // Result type definitions for queries
 type FieldWithSelection< T, S > = NonNullable< T > extends readonly any[]
@@ -44,8 +46,8 @@ export type QueryResult< Q extends Query > = {
     query: Q;
     result: {
         data: QuerySelectResult< Q[ '$select' ] >;
-        references: any; // not yet implemented
-        units: any; // not yet implemented
+        references: ReferenceCollection;
+        units: DeepPartial< UnitCollection >;
     };
     metadata: {
         total: number;
