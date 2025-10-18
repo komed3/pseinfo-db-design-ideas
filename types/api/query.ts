@@ -9,6 +9,8 @@ export type Query = {
     $select: QuerySelect;
     $where?: QueryFilter;
     $sort?: QuerySortOptions;
+    $join?: any; // not yet implemented
+    $group?: any; // not yet implemented
     $limit?: number;
     $offset?: number;
 };
