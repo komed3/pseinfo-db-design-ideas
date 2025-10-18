@@ -33,6 +33,12 @@ export type DeepPartial< T > = {
     T[ P ] extends object ? DeepPartial< T[ P ] > : T[ P ];
 };
 
+// Recursively make all properties in T required
+export type DeepRequired< T > = {
+    [ P in keyof T ]: T[ P ] extends ( infer U )[] ? DeepRequired< U >[] :
+    T[ P ] extends object ? DeepRequired< T[ P ] > : T[ P ];
+};
+
 // Generate all possible dot-separated paths in a nested object T
 export type Paths< T, Prev extends string = '' > = {
     [ K in keyof T & string ]:
