@@ -1,17 +1,17 @@
-import { DeepPartial } from '../abstract/utils';
 import { Query } from './query';
-import { DataBase } from '../database';
 
 // Result type for a query
 export type QueryResult< Q extends Query > = {
     query: Q;
-    result: DeepPartial< DataBase >,
+    result: any; // not yet implemented
+    references: any; // not yet implemented
+    units: any; // not yet implemented
     metadata: {
         total: number;
         limit: number;
         hasMore: boolean;
-        queryTime: DateTime;
-        cachedTime: DateTime;
+        queryTime: Date;
+        cachedTime: Date;
         execTime: number;
     };
 };
