@@ -61,7 +61,7 @@ export interface QueryBuilder<
 
     // Method to set the sort order of the query
     orderBy < NewSort extends QuerySort > ( sort: NewSort ) : QueryBuilder<
-        From, Select, Where, Group, NewSort, Limit, Offset, Options
+        From, Select, Where, Group, [ ...Sort, ...NewSort ], Limit, Offset, Options
     >;
 
     // Method to set the limit of the query
