@@ -17,3 +17,11 @@ type Paths< T, Prev extends string = '' > = {
 export type CollectionPaths = {
     [ K in QueryableCollection & string ]: Paths< CollectionValue< DataBase[ K ] > >;
 };
+
+// Type to walk paths with an additional type T appended
+export type PathWalker< T extends any = never > = {
+    [ K in QueryableCollection & string ]:
+        T extends readonly any[]
+            ? [ K, CollectionPaths[ K ], ...T ]
+            : [ K, CollectionPaths[ K ], T ];
+}[ QueryableCollection & string ][]
