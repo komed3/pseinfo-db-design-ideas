@@ -19,7 +19,7 @@ export type CollectionPaths = {
 };
 
 // Type to walk paths with an additional type T appended
-export type PathWalker< T extends any = never > = {
+export type PathWalker< T extends any = [] > = {
     [ K in QueryableCollection & string ]:
         T extends readonly any[]
             ? [ K, CollectionPaths[ K ], ...T ]
