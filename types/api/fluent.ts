@@ -36,4 +36,12 @@ export interface QueryBuilder<
         From, Select, Where, Group, NewSort, Limit, Offset, Options
     >;
 
+    limit < NewLimit extends number > ( limit: NewLimit ) : QueryBuilder<
+        From, Select, Where, Group, Sort, NewLimit, Offset, Options
+    >;
+
+    offset < NewOffset extends number > ( offset: NewOffset ) : QueryBuilder<
+        From, Select, Where, Group, Sort, Limit, NewOffset, Options
+    >;
+
 }
