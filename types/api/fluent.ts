@@ -5,7 +5,7 @@ import { QueryOptions } from './option';
 import { QuerySelect } from './select';
 import { QuerySort } from './sort';
 
-export interface FluentQueryBuilder<
+export interface QueryBuilder<
     From extends QueryableCollection[] = [],
     Select extends QuerySelect = {},
     Where extends QueryFilter = {},
@@ -14,4 +14,14 @@ export interface FluentQueryBuilder<
     Limit extends number | undefined = undefined,
     Offset extends number | undefined = undefined,
     Options extends QueryOptions = {}
-> {}
+> {
+
+    from < NewFrom extends QueryableCollection > ( collection: NewFrom ) : QueryBuilder<
+        [ ...From, NewFrom ], Select, Where, Group, Sort, Limit, Offset, Options
+    >;
+
+    select < NewSelect extends QuerySelect > ( fields: NewSelect ) : QueryBuilder<
+        From, NewSelect, Where, Group, Sort, Limit, Offset, Options
+    >;
+
+}
