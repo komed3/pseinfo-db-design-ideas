@@ -28,4 +28,12 @@ export interface QueryBuilder<
         From, Select, NewWhere, Group, Sort, Limit, Offset, Options
     >;
 
+    groupBy < NewGroup extends QueryGroup > ( group: NewGroup ) : QueryBuilder<
+        From, Select, Where, NewGroup, Sort, Limit, Offset, Options
+    >;
+
+    orderBy < NewSort extends QuerySort > ( sort: NewSort ) : QueryBuilder<
+        From, Select, Where, Group, NewSort, Limit, Offset, Options
+    >;
+
 }
