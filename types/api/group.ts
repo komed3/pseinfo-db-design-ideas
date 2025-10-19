@@ -6,7 +6,7 @@ export const QueryAggregationFn = [ 'count', 'max', 'min', 'sum', 'avg' ] as con
 export type QueryAggregationFn = ( typeof QueryAggregationFn )[ number ];
 
 // Type for grouping options in queries
-export type QueryGroupOptions = {
+export type QueryGroup = {
     groupBy: PathWalker;
     aggregate?: PathWalker< QueryAggregationFn >;
     having?: QueryFilter;

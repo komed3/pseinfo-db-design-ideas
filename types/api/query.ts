@@ -1,17 +1,17 @@
 import { QueryFilter } from './filter';
-import { QueryGroupOptions } from './group';
+import { QueryGroup } from './group';
 import { QueryableCollection } from './helper';
 import { QueryOptions } from './option';
 import { QuerySelect } from './select';
-import { QuerySortOptions } from './sort';
+import { QuerySort } from './sort';
 
 // Root query type
 export type Query = {
     $from: QueryableCollection[];
     $select: QuerySelect;
     $where?: QueryFilter;
-    $group?: QueryGroupOptions;
-    $sort?: QuerySortOptions;
+    $group?: QueryGroup;
+    $sort?: QuerySort;
     $offset?: number;
     $limit?: number;
     $options?: QueryOptions;
