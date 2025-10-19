@@ -9,8 +9,6 @@ export type Query = {
     $from: QueryableCollection[];
     $select: QuerySelect;
     $where?: QueryFilter;
-    $join?: any; // not yet implemented
-    $group?: any; // not yet implemented
     $sort?: QuerySortOptions;
     $offset?: number;
     $limit?: number;
