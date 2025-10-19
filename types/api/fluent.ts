@@ -24,4 +24,8 @@ export interface QueryBuilder<
         From, NewSelect, Where, Group, Sort, Limit, Offset, Options
     >;
 
+    where < NewWhere extends QueryFilter > ( condition: NewWhere ) : QueryBuilder<
+        From, Select, NewWhere, Group, Sort, Limit, Offset, Options
+    >;
+
 }
