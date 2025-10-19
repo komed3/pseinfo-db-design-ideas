@@ -12,7 +12,7 @@ export type Query = {
     $where?: QueryFilter;
     $group?: QueryGroup;
     $sort?: QuerySort;
-    $offset?: number;
     $limit?: number;
+    $offset?: number;
     $options?: QueryOptions;
 };
