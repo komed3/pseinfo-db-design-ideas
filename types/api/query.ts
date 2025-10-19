@@ -1,5 +1,6 @@
 import { QueryFilter } from './filter';
 import { QueryableCollection } from './helper';
+import { QueryOptions } from './option';
 import { QuerySelect } from './select';
 import { QuerySortOptions } from './sort';
 
@@ -13,9 +14,5 @@ export type Query = {
     $sort?: QuerySortOptions;
     $offset?: number;
     $limit?: number;
-    $options?: {
-        resolveRefs?: boolean;
-        resolveUnits?: boolean;
-        units?: any; // not yet implemented
-    };
+    $options?: QueryOptions;
 };
