@@ -44,4 +44,16 @@ export interface QueryBuilder<
         From, Select, Where, Group, Sort, Limit, NewOffset, Options
     >;
 
+    options < NewOptions extends QueryOptions > ( options: NewOptions ) : QueryBuilder<
+        From, Select, Where, Group, Sort, Limit, Offset, NewOptions
+    >;
+
+    withResolvedRefs ( resolve?: boolean ) : QueryBuilder<
+        From, Select, Where, Group, Sort, Limit, Offset, Options & { resolveRefs: boolean }
+    >;
+
+    withResolvedUnits ( resolve?: boolean ) : QueryBuilder<
+        From, Select, Where, Group, Sort, Limit, Offset, Options & { resolveUnits: boolean }
+    >;
+
 }
