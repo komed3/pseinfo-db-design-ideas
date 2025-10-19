@@ -56,4 +56,6 @@ export interface QueryBuilder<
         From, Select, Where, Group, Sort, Limit, Offset, Options & { resolveUnits: boolean }
     >;
 
+    build () : FluentQuery< From, Select, Where, Group, Sort, Limit, Offset, Options >;
+
 }
